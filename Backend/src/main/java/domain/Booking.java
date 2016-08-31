@@ -11,6 +11,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToMany
     @ElementCollection
     private List<Ticket> tickets;
     private Boolean paid;

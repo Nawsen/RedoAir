@@ -1,11 +1,13 @@
 package domain;
 
+import javax.inject.Named;
 import javax.persistence.*;
 
 /**
  * Created by WVDAZ49 on 31/08/2016.
  */
 @Entity
+@NamedQuery(name = "getAll", query = "SELECT a FROM Airport a")
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

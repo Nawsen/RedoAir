@@ -16,7 +16,7 @@
             <artifactId>backend</artifactId>
             <groupId>com.realdolmen</groupId>
             <version>1.0.0</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

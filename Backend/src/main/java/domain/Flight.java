@@ -8,6 +8,7 @@ import java.util.List;
  * Created by WVDAZ49 on 31/08/2016.
  */
 @Entity
+@NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f WHERE f.departedFrom.id = :departure AND f.arrivalIn.id = :arrival")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +17,7 @@ public class Flight {
     private Date departureTime;
     private Date arrivalTime;
     private Double basePrice;
+    @OneToMany(fetch = FetchType.EAGER)
     @ElementCollection
     private List<Discount> discounts;
     @OneToOne

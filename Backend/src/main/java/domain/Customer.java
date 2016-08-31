@@ -15,6 +15,7 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    private String email;
     private String creditCard;
 
     public Customer() {
@@ -50,5 +51,13 @@ public class Customer {
 
     public void setCreditCard(String creditCard) {
         this.creditCard = creditCard;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

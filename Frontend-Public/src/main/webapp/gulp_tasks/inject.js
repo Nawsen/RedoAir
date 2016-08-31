@@ -11,8 +11,7 @@ gulp.task('inject', inject);
 function inject() {
   const injectStyles = gulp.src([
   conf.path.src('**/*.css'),
-  conf.path.src('../bower_components/angular-material/angular-material.css'),
-  conf.path.src('../bower_components/bootstrap/dist/css/bootstrap.min.css')
+  conf.path.src('../bower_components/materialize/dist/css/materialize.css')
   ], {read: false});
 
   const injectScripts = gulp.src([
@@ -23,7 +22,7 @@ function inject() {
     conf.path.tmp('app/components/*.js'),
     conf.path.tmp('../bower_components/angular-aria/angular-aria.js'),
     conf.path.tmp('../bower_components/angular-animate/angular-animate.js'),
-    conf.path.tmp('../bower_components/angular-material/angular-material.js'),
+    conf.path.tmp('../bower_components/materialize/dist/js/materialize.js'),
     conf.path.tmp('**/*.js'),
     conf.path.tmp('**/*.spec.js')
   ]);

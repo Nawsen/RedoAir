@@ -16,10 +16,11 @@ public class Flight {
     private Date departureTime;
     private Date arrivalTime;
     private Double basePrice;
-    @ManyToOne
     @ElementCollection
     private List<Discount> discounts;
+    @OneToOne
     private Airport departedFrom;
+    @OneToOne
     private Airport arrivalIn;
 
     public Flight() {

@@ -5,9 +5,8 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
-    <persistence-unit name="RealDolmenPersistenceUnit">
+    <persistence-unit name="AirdatePersistenceUnit" transaction-type="JTA">
         <jta-data-source>java:/rd/datasources/RealDolmenDataSource</jta-data-source>
-        <!--<class>com.realdolmen.acaddemict.algemeneoef.domain.Tankbeurt</class>-->
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.show_sql" value="true"/>

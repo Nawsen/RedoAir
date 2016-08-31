@@ -11,5 +11,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('app', {
       url: '/',
       component: 'app'
+    })
+    .state('overview', {
+      url: '/overview',
+      templateUrl: 'app/views/overview.html',
+      controller:'OverviewController',
+      controllerAs: 'vm'
     });
 }
+

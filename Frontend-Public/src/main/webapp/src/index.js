@@ -1,3 +1,3 @@
 angular
-  .module('app', ['ui.router', 'ngAnimate'])
+  .module('app', ['ui.router', 'ngAnimate', 'ui.materialize'])
   .service('todoService', TodoService);

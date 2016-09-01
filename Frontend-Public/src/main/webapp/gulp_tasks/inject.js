@@ -15,7 +15,6 @@ function inject() {
   ], {read: false});
 
   const injectScripts = gulp.src([
-    conf.path.tmp('app/todos/todos.js'),
     conf.path.tmp('index.js'),
     conf.path.tmp('app/constants/*.js'),
     conf.path.tmp('app/containers/*.js'),

@@ -18,7 +18,11 @@
       // }
       getAllAirports: function () {
         return $http.get(BASE_URL + 'airport/all');
-      }
+      },
+      getFilteredAirports: function (filter) {
+        return $http.get(BASE_URL + 'airport/all/'+filter);
+      },
+
     }
   }
 

@@ -18,4 +18,10 @@ public class AirportRepository {
     public List<Airport> getAllAirports(){
         return em.createNamedQuery("getAll", Airport.class).getResultList();
     }
+
+    public List<Airport> getFilteredAirports(String filter){
+        return em.createNamedQuery("getFilteredAirports", Airport.class)
+                .setParameter("filter", "%" + filter + "%")
+                .getResultList();
+    }
 }

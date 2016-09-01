@@ -10,21 +10,50 @@
 
   function OverviewController($scope, NetworkService) {
     var vm = this;
-    console.log('IT WURKS BRUH');
+
+    vm.selectedDeparture;
+    vm.selectedArrival;
+
+    vm.arrivalAirports = [];
+    vm.departureAirports = [];
+    getAirports();
 
 
-    vm.selectedDeparture = function (flight) {
 
+    vm.setSelectedDeparture = function (flight) {
+      console.log('clicked');
+      vm.selectedDeparture = flight;
+    };
+    vm.setSelectedArrival = function (flight) {
+      vm.selectedArrival = flight;
     };
 
+    vm.test = function () {
+      console.log('scrollfire works');
+    };
 
     function getAirports() {
       NetworkService.getAllAirports().then(function (response) {
-        console.log(response.data);
-        return response.data;
+        vm.arrivalAirports = response.data;
+        vm.departureAirports = response.data;
       });
     }
-    vm.flights = getAirports();
+
+    vm.filterDeparture = function (filter) {
+      NetworkService.getFilteredAirports(filter).then(function (response) {
+        vm.departureAirports = response.data;
+      })
+    }
+    vm.filterArrival = function (filter) {
+      NetworkService.getFilteredAirports(filter).then(function (response) {
+        vm.arrivalAirports = response.data;
+      })
+    }
+
+
+
+
+
   }
 
 })();

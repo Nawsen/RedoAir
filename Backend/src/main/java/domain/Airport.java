@@ -7,7 +7,11 @@ import javax.persistence.*;
  * Created by WVDAZ49 on 31/08/2016.
  */
 @Entity
-@NamedQuery(name = "getAll", query = "SELECT a FROM Airport a")
+@NamedQueries({
+        @NamedQuery(name = "getAll", query = "SELECT a FROM Airport a"),
+        @NamedQuery(name = "getFilteredAirports", query = "SELECT a FROM Airport a WHERE a.code LIKE :filter OR a.name LIKE :filter")
+})
+
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

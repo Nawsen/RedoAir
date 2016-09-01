@@ -19,4 +19,7 @@ public class AirportService {
     public List<Airport> getAllAirports(){
         return repo.getAllAirports();
     }
+    public List<Airport> getFilteredAirports(String filter){
+        return repo.getFilteredAirports(filter);
+    }
 }

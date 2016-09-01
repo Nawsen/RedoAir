@@ -13,11 +13,11 @@
   function NetworkService($http) {
     var BASE_URL = 'http://localhost:8080/frontend-public/api/';
     return {
-      // getAllAirports: function () {
-      //   return $http.get(BASE_URL + '/airport/all');
-      // }
       getAllAirports: function () {
         return $http.get(BASE_URL + 'airport/all');
+      },
+      getFlights: function (departureId, arrivalId) {
+        return $http.get(BASE_URL + 'flight/find?departure=' + departureId + '&arrival=' + arrivalId);
       }
     }
   }

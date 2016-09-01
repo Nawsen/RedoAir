@@ -6,8 +6,7 @@
     <title>FountainJS</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- build:css({.tmp,src}) styles/vendor.css -->
     <!-- bower:css -->
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
@@ -23,7 +22,20 @@
 
 
   <body ng-app="app">
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo"><i class="medium material-icons">airplanemode_active</i>ReDo Air</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+          <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+          <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
       <ui-view></ui-view>
+
   </body>
 
   <!-- build:js({.tmp,src}) scripts/vendor.js -->

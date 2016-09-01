@@ -19,7 +19,7 @@ public class FlightRepository {
     @PersistenceContext
     EntityManager em;
 
-    public List<Flight> getFlightsForAirport(Long arrivalId, Long departureId){
+    public List<Flight> getFlightsForAirport(String arrivalId, String departureId){
         return em.createNamedQuery("findFlights", Flight.class)
                 .setParameter("departure", departureId)
                 .setParameter("arrival", arrivalId)

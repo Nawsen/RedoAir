@@ -1,33 +1,28 @@
-package domain;
+package VO;
 
-import javax.persistence.*;
+import domain.Airport;
+import domain.Discount;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by WVDAZ49 on 31/08/2016.
+ * Created by WVDAZ49 on 1/09/2016.
  */
-@Entity
-@NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f WHERE f.departedFrom.code = :departure AND f.arrivalIn.code = :arrival")
-public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerFlightVO {
     private Long flightId;
     private String flightNumber;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date departureTime;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalTime;
     private Double basePrice;
-    @OneToMany(fetch = FetchType.EAGER)
-    @ElementCollection
-    private List<Discount> discounts;
-    @OneToOne
     private Airport departedFrom;
-    @OneToOne
     private Airport arrivalIn;
 
-    public Flight() {
+    public CustomerFlightVO() {
     }
 
     public Long getFlightId() {
@@ -68,14 +63,6 @@ public class Flight {
 
     public void setBasePrice(Double basePrice) {
         this.basePrice = basePrice;
-    }
-
-    public List<Discount> getDiscounts() {
-        return discounts;
-    }
-
-    public void setDiscounts(List<Discount> discounts) {
-        this.discounts = discounts;
     }
 
     public Airport getDepartedFrom() {

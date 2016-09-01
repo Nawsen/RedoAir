@@ -1,6 +1,8 @@
 package service;
 
+import VO.CustomerFlightVO;
 import domain.Flight;
+import ma.glasnost.orika.MapperFacade;
 import repository.FlightRepository;
 
 import javax.ejb.Stateless;
@@ -15,7 +17,9 @@ public class FlightService {
     @Inject
     FlightRepository flightRepo;
 
-    public List<Flight> findFlights(Long arrivalId, Long departureId){
+
+
+    public List<Flight> findFlights(String arrivalId, String departureId){
         return flightRepo.getFlightsForAirport(arrivalId, departureId);
     }
 

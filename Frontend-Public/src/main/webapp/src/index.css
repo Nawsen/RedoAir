@@ -1,3 +1,8 @@
 nav{
   background-color: #2196f3;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.material-icons.md-48 {
+  font-size: 48px;
 }

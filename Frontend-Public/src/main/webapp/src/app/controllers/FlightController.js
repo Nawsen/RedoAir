@@ -5,15 +5,16 @@
     .controller('FlightController', [
       '$scope',
       'NetworkService',
+      '$stateParams',
       FlightController
     ]);
 
-  function FlightController($scope, NetworkService) {
+  function FlightController($scope, NetworkService, $stateParams) {
     var vm = this;
 
 
     function getFlight() {
-      NetworkService.getFlights("FLA-542","OST-002").then(function (response) {
+      NetworkService.getFlights($stateParams.departure,$stateParams.arrival).then(function (response) {
         vm.flights = response.data;
         console.log(response.data);
       });

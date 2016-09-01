@@ -18,7 +18,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: 'vm'
     })
     .state('flight', {
-      url: '/flights',
+      url: '/flights?departure&arrival',
       templateUrl: 'app/views/flights.html',
       controller:'FlightController',
       controllerAs: 'vm'

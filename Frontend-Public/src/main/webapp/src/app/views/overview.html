@@ -1,4 +1,3 @@
-Wannes is ne noobssss
 <div class="container">
   <div class="row">
 
@@ -76,33 +75,9 @@ Wannes is ne noobssss
           <p>{{airport.location.region}}<br>
             {{airport.code}}
           </p>
-          <a href="#!" ng-if="vm.selectedArrival == airport && vm.selectedDeparture" class="secondary-content"><i
+          <a href="#!" ng-if="vm.selectedArrival == airport && vm.selectedDeparture" class="secondary-content" ui-sref="flight({departure: vm.selectedDeparture.code, arrival: vm.selectedArrival.code})"><i
             class="material-icons">grade</i></a>
         </li>
-        <!--<li class="collection-item avatar">-->
-        <!--<i class="material-icons circle">folder</i>-->
-        <!--<span class="title">Title</span>-->
-        <!--<p>First Line <br>-->
-        <!--Second Line-->
-        <!--</p>-->
-        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-        <!--</li>-->
-        <!--<li class="collection-item avatar">-->
-        <!--<i class="material-icons circle green">insert_chart</i>-->
-        <!--<span class="title">Title</span>-->
-        <!--<p>First Line <br>-->
-        <!--Second Line-->
-        <!--</p>-->
-        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-        <!--</li>-->
-        <!--<li class="collection-item avatar">-->
-        <!--<i class="material-icons circle red">play_arrow</i>-->
-        <!--<span class="title">Title</span>-->
-        <!--<p>First Line <br>-->
-        <!--Second Line-->
-        <!--</p>-->
-        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-        <!--</li>-->
       </ul>
     </div>
     <!--<h2 class="header" scroll-fire="console.log('test')">ScrollFire</h2>-->

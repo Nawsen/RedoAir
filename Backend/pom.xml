@@ -15,6 +15,11 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.2.2.Final</version>
         </dependency>
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>1.4.4</version>
+        </dependency>
     </dependencies>
     <artifactId>backend</artifactId>
 <build>

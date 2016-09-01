@@ -7,11 +7,10 @@ import service.FlightService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.persistence.EntityManager;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,7 +26,7 @@ public class FlightController {
     @GET
     @Path("find")
     @Produces(value = MediaType.APPLICATION_JSON)
-    public List<Flight> findFlights(@QueryParam("departure") Long departureId, @QueryParam("arrival") Long arrivalId){
-        return service.findFlights(departureId, arrivalId);
+    public List<Flight> findFlights(@QueryParam("departure") String departureCode, @QueryParam("arrival") String arrivalCode){
+        return service.findFlights(departureCode, arrivalCode);
     }
 }

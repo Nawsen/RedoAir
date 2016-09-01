@@ -18,7 +18,6 @@
       },
       getFlights: function (departureId, arrivalId) {
         return $http.get(BASE_URL + 'flight/find?departure=' + departureId + '&arrival=' + arrivalId);
-      }
       },
       getFilteredAirports: function (filter) {
         return $http.get(BASE_URL + 'airport/all/'+filter);

@@ -4,27 +4,27 @@
     .module('app')
     .controller('OverviewController', [
       '$scope',
+      'NetworkService',
       OverviewController
     ]);
 
-  function OverviewController($scope) {
+  function OverviewController($scope, NetworkService) {
     var vm = this;
     console.log('IT WURKS BRUH');
-    $scope.collapsibleElements = [{
-      icon: 'mdi-image-filter-drama',
-      title: 'First',
-      content: 'Lorem ipsum dolor sit amet.'
-    },{
-      icon: 'mdi-maps-place',
-      title: 'Second',
-      content: 'Lorem ipsum dolor sit amet.'
-    },{
-      icon: 'mdi-social-whatshot',
-      title: 'Third',
-      content: 'Lorem ipsum dolor sit amet.'
-    }
-    ];
 
+
+    vm.selectedDeparture = function (flight) {
+
+    };
+
+
+    function getAirports() {
+      NetworkService.getAllAirports().then(function (response) {
+        console.log(response.data);
+        return response.data;
+      });
+    }
+    vm.flights = getAirports();
   }
 
 })();

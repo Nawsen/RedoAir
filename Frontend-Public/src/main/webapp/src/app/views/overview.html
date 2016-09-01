@@ -4,74 +4,76 @@ arne is ne noobssss
 
     <div class="col s6 m6 l6">
       <ul class="collection">
-        <li class="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle">
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle">folder</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle green">insert_chart</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle red">play_arrow</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
+        <!--<a href="#!" class="collection-item">-->
+          <li class="collection-item active avatar" ng-repeat="flight in vm.flights track by $index" ng-click="selectedDeparture(flight)">
+            <i class="material-icons circle">flight_takeoff</i>
+            <span class="title">Title</span>
+            <p>First Line <br>
+              Second Line
+            </p>
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+          </li>
+        <!--</a>-->
+        <!--<li class="collection-item avatar">-->
+        <!--<i class="material-icons circle">folder</i>-->
+        <!--<span class="title">Title</span>-->
+        <!--<p>First Line <br>-->
+        <!--Second Line-->
+        <!--</p>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+        <!--</li>-->
+        <!--<li class="collection-item avatar">-->
+        <!--<i class="material-icons circle green">insert_chart</i>-->
+        <!--<span class="title">Title</span>-->
+        <!--<p>First Line <br>-->
+        <!--Second Line-->
+        <!--</p>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+        <!--</li>-->
+        <!--<li class="collection-item avatar">-->
+        <!--<i class="material-icons circle red">play_arrow</i>-->
+        <!--<span class="title">Title</span>-->
+        <!--<p>First Line <br>-->
+        <!--Second Line-->
+        <!--</p>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+        <!--</li>-->
       </ul>
     </div>
     <div class="col s6 m6 l6">
       <ul class="collection">
-        <li class="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle">
+        <li class="collection-item avatar" ng-repeat="flight in vm.flights">
+          <i class="material-icons circle">flight_land</i>
           <span class="title">Title</span>
           <p>First Line <br>
             Second Line
           </p>
           <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
         </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle">folder</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle green">insert_chart</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle red">play_arrow</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
+        <!--<li class="collection-item avatar">-->
+        <!--<i class="material-icons circle">folder</i>-->
+        <!--<span class="title">Title</span>-->
+        <!--<p>First Line <br>-->
+        <!--Second Line-->
+        <!--</p>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+        <!--</li>-->
+        <!--<li class="collection-item avatar">-->
+        <!--<i class="material-icons circle green">insert_chart</i>-->
+        <!--<span class="title">Title</span>-->
+        <!--<p>First Line <br>-->
+        <!--Second Line-->
+        <!--</p>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+        <!--</li>-->
+        <!--<li class="collection-item avatar">-->
+        <!--<i class="material-icons circle red">play_arrow</i>-->
+        <!--<span class="title">Title</span>-->
+        <!--<p>First Line <br>-->
+        <!--Second Line-->
+        <!--</p>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
+        <!--</li>-->
       </ul>
     </div>
 

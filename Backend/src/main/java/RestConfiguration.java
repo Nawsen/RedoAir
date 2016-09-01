@@ -4,6 +4,6 @@ import javax.ws.rs.core.Application;
 /**
  * Created by WVDAZ49 on 31/08/2016.
  */
-@ApplicationPath("api")
+@ApplicationPath("/api")
 public class RestConfiguration extends Application{
 }

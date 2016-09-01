@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by WVDAZ49 on 31/08/2016.
  */
-@Path("airport")
+@Path("/airport")
 @Stateless
 public class AirportController {
 
@@ -22,7 +22,7 @@ public class AirportController {
     AirportService service;
 
     @GET
-    @Path("all")
+    @Path("/all")
     @Produces(value = MediaType.APPLICATION_JSON)
     public List<Airport> getStringTest() {
         return service.getAllAirports();

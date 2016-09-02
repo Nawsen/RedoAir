@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-
     <div class="col s6 m6 l6">
       <h2>Departure</h2>
       {{vm.selectedDeparture | json }}
@@ -18,7 +17,8 @@
       <ul class="collection">
         <!--<a href="#!" class="collection-item">-->
         <li class="collection-item avatar" ng-repeat="airport in vm.departureAirports"
-            ng-click="vm.setSelectedDeparture(airport)">
+            ng-click="vm.setSelectedDeparture(airport)"
+            ng-class="{'active': vm.selectedDeparture == airport}">
           <i class="material-icons circle">flight_takeoff</i>
           <span class="title">{{airport.name}}</span>
           <p>{{airport.location.region}}<br>
@@ -69,7 +69,9 @@
         </li>
       </ul>
       <ul class="collection">
-        <li class="collection-item avatar" ng-repeat="airport in vm.arrivalAirports" ng-click="vm.setSelectedArrival(airport)">
+        <li class="collection-item avatar" ng-repeat="airport in vm.arrivalAirports"
+            ng-click="vm.setSelectedArrival(airport)"
+            ng-class="{'active': vm.selectedDeparture == airport}">
           <i class="material-icons circle">flight_land</i>
           <span class="title">{{airport.name}}</span>
           <p>{{airport.location.region}}<br>

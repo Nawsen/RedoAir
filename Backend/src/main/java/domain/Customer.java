@@ -1,14 +1,16 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.mindrot.jbcrypt.BCrypt;
+
+import javax.persistence.*;
 
 /**
  * Created by WVDAZ49 on 31/08/2016.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "getCustomerByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email")
+})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +19,9 @@ public class Customer {
     private String lastName;
     private String email;
     private String creditCard;
+    private String password;
+    @Transient
+    private String loginPassword;
 
     public Customer() {
     }
@@ -59,5 +64,21 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
+    public String getLoginPassword() {
+        return loginPassword;
+    }
+
+    public void setLoginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
     }
 }

@@ -15,6 +15,18 @@ nav{
 .collection .collection-item.active{
   background-color: #32bdf3;
 }
+
+.container-auth {
+  display: flex;
+  flex-direction: column;
+  width:20%;
+
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 body {
   background: #fff;
 }
@@ -22,8 +34,17 @@ body {
   display: inline-block;
   padding: 32px 10px 0px 10px;
 }
+.logintabs{
+  margin: 0 -0.74em;
+}
+.logintabs .tabs .tab a{
+  color: #1904e9;
+}
+.logintabs .tabs .indicator{
+  background-color: #1904e9;
+}
 
-/*Change color for inputfields*/
+/*Change color for inputfields & prefix*/
 /*START*/
 .input-field input[type=date]:focus + label,
 .input-field input[type=text]:focus + label,
@@ -38,5 +59,8 @@ body {
 .input-field input[type=password]:focus {
   border-bottom: 2px solid #1904e9;
   box-shadow: none;
+}
+.input-field .prefix.active{
+  color: #1904e9;
 }
 /*END*/

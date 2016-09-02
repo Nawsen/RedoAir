@@ -30,8 +30,9 @@ function watch(done) {
     'bower.json'
   ], gulp.parallel('inject'));
 
-  gulp.watch(conf.path.src('app/**/*.html'), gulp.series('partials', gulp.parallel('inject', 'other')));
-  gulp.watch(conf.path.src('app/**/*.html'), reloadBrowserSync);
+  gulp.watch(conf.path.src('app/**/*.html'), gulp.series('partials', reloadBrowserSync));
+  // gulp.watch(conf.path.src('app/**/*.html'), gulp.series('partials', gulp.parallel('other'), reloadBrowserSync));
+  // gulp.watch(conf.path.src('app/**/*.html'), reloadBrowserSync);
   gulp.watch([
     conf.path.src('**/*.css')
   ], gulp.series('styles'));

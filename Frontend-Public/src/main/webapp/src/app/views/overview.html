@@ -71,7 +71,7 @@
       <ul class="collection">
         <li class="collection-item avatar" ng-repeat="airport in vm.arrivalAirports"
             ng-click="vm.setSelectedArrival(airport)"
-            ng-class="{'active': vm.selectedDeparture == airport}">
+            ng-class="{'active': vm.selectedArrival == airport}">
           <i class="material-icons circle">flight_land</i>
           <span class="title">{{airport.name}}</span>
           <p>{{airport.location.region}}<br>

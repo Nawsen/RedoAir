@@ -19,9 +19,7 @@
     getAirports();
 
 
-
     vm.setSelectedDeparture = function (flight) {
-      console.log('clicked');
       vm.selectedDeparture = flight;
     };
     vm.setSelectedArrival = function (flight) {
@@ -29,7 +27,7 @@
     };
 
     vm.test = function () {
-      console.log('scrollfire works');
+      // console.log('scrollfire works');
     };
 
     function getAirports() {

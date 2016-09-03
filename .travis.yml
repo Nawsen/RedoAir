@@ -6,4 +6,5 @@ jdk:
 script: "mvn test -DdatabaseEngine=h2"
 
 after_success:
-  - mvn clean cobertura:cobertura coveralls:cobertura
+  - mvn -Pcobertura clean cobertura:cobertura
+  - mvn org.eluder.coveralls:coveralls-maven-plugin:report

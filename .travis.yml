@@ -6,4 +6,4 @@ jdk:
 script: "mvn test -DdatabaseEngine=h2"
 
 after_success:
-  - coveralls
+  - mvn clean cobertura:cobertura coveralls:cobertura

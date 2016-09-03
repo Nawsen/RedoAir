@@ -1,0 +1,7 @@
+<dataset>
+    <airport id="1000" code="BBR-548" city="Brussel" country="België" region="Europa" name="vlieghaven van brussel"/>
+    <airport id="1001" code="QQL-228" city="Oostende" country="Belgie" region="Europa" name="Ostende vogelhaven"/>
+    <airport id="1002" code="BBB-284" city="Amsterdam" country="Nederland" region="Europa" name="Amsterdam grote vlieg"/>
+    <airport id="1003" code="PQD-627" city="Paris" country="France" region="Europa" name="Brol du Paris"/>
+    <airport id="1004" code="MML-349" city="Istanbul" country="Turkey" region="Afrika" name="Boemchakalaka"/>
+</dataset>

@@ -3,16 +3,16 @@
   angular
     .module('app')
     .controller('AccountController', [
-      '$scope',
       'NetworkService',
-      '$stateParams',
       accountController
     ]);
 
-  function accountController($scope, NetworkService, $stateParams) {
+  function accountController(NetworkService) {
     var vm = this;
-
-
+    vm.register = function () {
+      NetworkService.postRegister(vm.user).then(function () {
+        Materialize.toast('Successfully registered!', 1000);
+      });
+    }
   }
-
 })();

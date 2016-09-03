@@ -22,6 +22,14 @@
       getFilteredAirports: function (filter) {
         return $http.get(BASE_URL + 'airport/all/'+filter);
       },
+      postRegister: function (user) {
+        return $http.post(BASE_URL + 'customer/create', {
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          password: user.password
+        })
+      }
 
     }
   }

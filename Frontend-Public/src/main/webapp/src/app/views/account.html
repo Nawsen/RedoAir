@@ -9,6 +9,10 @@
           <li class="tab"><a href="#register">Register</a></li>
         </ul>
       </div>
+
+
+
+
       <!--Login Part-->
       <div id="login" class="row login-custom-card col" style="">
 
@@ -42,6 +46,13 @@
           </div>
         </form>
       </div>
+
+
+
+
+
+
+
       <!--Register Part-->
       <div id="register" class="row login-custom-card">
         <form class="col s12">
@@ -52,24 +63,39 @@
 
           <div class='row'>
             <div class='input-field col s12'>
-              <input class='validate' type='email' name='email' id='email'/>
+              <i class="material-icons prefix">person</i>
+              <input class='validate' type='email' name='email' id='email' ng-model="vm.user.email"/>
               <label for='email'>Enter your email</label>
             </div>
           </div>
 
           <div class='row'>
             <div class='input-field col s12'>
-              <input class='validate' type='password' name='password' id='password'/>
+              <i class="material-icons prefix">face</i>
+              <input class='validate' type='text' name='firstName' id="firstName" ng-model="vm.user.firstName"/>
+              <label for='firstName'>Enter your first name</label>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='input-field col s12'>
+              <i class="material-icons prefix">face</i>
+              <input class='validate' type='text' name='lastName' id="lastName" ng-model="vm.user.lastName"/>
+              <label for='lastName'>Enter your last name</label>
+            </div>
+          </div>
+
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <i class="material-icons prefix">lock_outline</i>
+              <input class='validate' type='password' name='password' id='password' ng-model="vm.user.password"/>
               <label for='password'>Enter your password</label>
             </div>
-            <label style='float: right;'>
-              <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
-            </label>
           </div>
 
           <br/>
           <div class='row'>
-            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
+            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="vm.register()">Register</button>
           </div>
         </form>
       </div>

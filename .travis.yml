@@ -4,3 +4,6 @@ jdk:
   - oraclejdk8
 
 script: "mvn test -DdatabaseEngine=h2"
+
+after_success:
+  - coveralls

@@ -35,6 +35,11 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <dependency>
+            <groupId>com.openpojo</groupId>
+            <artifactId>openpojo</artifactId>
+            <version>0.8.4</version>
+        </dependency>
     </dependencies>
     <artifactId>backend</artifactId>
 <build>

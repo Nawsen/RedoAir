@@ -21,6 +21,7 @@ public class CustomerServiceBean implements CustomerService {
     private CustomerRepository repo;
 
     public void createCustomer(Customer customer) {
+        customer.setPassword(BCrypt.hashpw(customer.getPassword(), BCrypt.gensalt()));
         repo.createCustomer(customer);
     }
 

@@ -71,7 +71,7 @@ public class Customer {
     }
 
     public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+        this.password = password;
     }
 
     public String getLoginPassword() {

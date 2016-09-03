@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless
 public class AirportRepository {
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     public List<Airport> getAllAirports(){
         return em.createNamedQuery("getAll", Airport.class).getResultList();

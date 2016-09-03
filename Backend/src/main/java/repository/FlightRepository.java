@@ -17,7 +17,7 @@ import java.util.List;
 public class FlightRepository {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     public List<Flight> getFlightsForAirport(String arrivalId, String departureId){
         return em.createNamedQuery("findFlights", Flight.class)

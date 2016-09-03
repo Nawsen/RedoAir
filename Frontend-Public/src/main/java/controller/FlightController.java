@@ -1,16 +1,13 @@
 package controller;
 
-import domain.Airport;
 import domain.Flight;
-import service.AirportService;
 import service.FlightService;
+import service.beans.FlightServiceBean;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +18,7 @@ import java.util.List;
 public class FlightController {
 
     @Inject
-    FlightService service;
+    private FlightService service;
 
     @GET
     @Path("find")

@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomerRepository {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     public void createCustomer(Customer customer) {
         em.persist(customer);

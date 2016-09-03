@@ -2,6 +2,7 @@ package controller;
 
 import domain.Airport;
 import service.AirportService;
+import service.beans.AirportServiceBean;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -20,7 +21,7 @@ import java.util.List;
 public class AirportController {
 
     @Inject
-    AirportService service;
+    private AirportService service;
 
     @GET
     @Path("/all")

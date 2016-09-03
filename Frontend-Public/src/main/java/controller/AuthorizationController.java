@@ -1,16 +1,14 @@
 package controller;
 
 import domain.Customer;
-import domain.Flight;
 import service.CustomerService;
-import service.FlightService;
+import service.beans.CustomerServiceBean;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 /**
  * Created by WVDAZ49 on 31/08/2016.
@@ -20,7 +18,7 @@ import java.util.List;
 public class AuthorizationController {
 
     @Inject
-    CustomerService service;
+    private CustomerService service;
 
     @POST
     @Path("/create")
@@ -33,8 +31,9 @@ public class AuthorizationController {
     @Path("/login")
     @Consumes(value = MediaType.APPLICATION_JSON)
     public Response login(Customer customer) {
-        if (service.login(customer)) {
-            return Response.ok("JWT HERE").build();
+        String JWT = service.login(customer);
+        if (JWT != null) {
+            return Response.ok(JWT).build();
         } else {
             return Response.status(418).build();
         }

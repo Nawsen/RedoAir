@@ -69,11 +69,10 @@ public abstract class AbstractBaseRepository<T, PK extends Serializable> impleme
     @Override
     public void deleteById(Long id) {
         T ref = (T) entityManager.getReference(getEntityClass(), id);
-        if (ref == null) {
-            throw new EntityNotFoundException(id.toString());
+        if (ref != null) {
+            delete(ref);
         }
 
-        delete(ref);
     }
 
     @Override

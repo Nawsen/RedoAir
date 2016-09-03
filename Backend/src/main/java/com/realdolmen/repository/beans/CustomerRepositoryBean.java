@@ -26,11 +26,4 @@ public class CustomerRepositoryBean extends AbstractBaseRepository<Customer, Int
                 .setParameter("email", email)
                 .getSingleResult();
     }
-
-    public List<Flight> getFlightsForAirport(String arrivalId, String departureId){
-        return getEntityManager().createNamedQuery("findFlights", Flight.class)
-                .setParameter("departure", departureId)
-                .setParameter("arrival", arrivalId)
-                .getResultList();
-    }
 }

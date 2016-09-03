@@ -8,7 +8,6 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "getAll", query = "SELECT a FROM Airport a"),
         @NamedQuery(name = "getFilteredAirports", query = "SELECT a FROM Airport a WHERE" +
                 " UPPER(a.code) LIKE UPPER(:filter) OR" +
                 " UPPER(a.name) LIKE UPPER(:filter) OR" +

@@ -41,7 +41,7 @@ public interface Repository<T, PK extends Serializable> {
      *
      * @param id The identifier of the entity to be deleted.
      */
-    void deleteById(PK id);
+    void deleteById(Long id);
 
     /**
      * Remove an entity from the database.

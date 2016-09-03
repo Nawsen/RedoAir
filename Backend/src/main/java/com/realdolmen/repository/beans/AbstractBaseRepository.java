@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.BadRequestException;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -23,9 +24,6 @@ public abstract class AbstractBaseRepository<T, PK extends Serializable> impleme
     public void setEm(EntityManager em) {
         this.entityManager = em;
     }
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     @SuppressWarnings("unchecked")
     public Class<?> getEntityClass() {
@@ -42,7 +40,11 @@ public abstract class AbstractBaseRepository<T, PK extends Serializable> impleme
     @SuppressWarnings("unchecked")
     @Override
     public T findByPrimaryKey(Long id) {
-        return (T) entityManager.find(getEntityClass(), id);
+            T t = entityManager.find((Class<T>) getEntityClass(),id);
+            if (t ==null){
+                throw new IllegalArgumentException("PrimaryKey must excist!");
+            }
+            return t;
     }
 
     @SuppressWarnings("unchecked")
@@ -65,7 +67,7 @@ public abstract class AbstractBaseRepository<T, PK extends Serializable> impleme
 
     @SuppressWarnings("unchecked")
     @Override
-    public void deleteById(PK id) {
+    public void deleteById(Long id) {
         T ref = (T) entityManager.getReference(getEntityClass(), id);
         if (ref == null) {
             throw new EntityNotFoundException(id.toString());

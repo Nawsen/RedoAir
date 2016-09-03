@@ -20,7 +20,7 @@ public class AirportRepositoryBean extends AbstractBaseRepository<Airport, Integ
 
     @Override
     public List<Airport> getAllAirports(){
-        return getEntityManager().createNamedQuery("getAll", Airport.class).getResultList();
+        return findAll();
     }
 
     @Override

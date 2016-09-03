@@ -25,9 +25,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by klaassen on 21/10/2015.
- */
+
 public abstract class AbstractRepositoryTest<T extends AbstractBaseRepository> {
 
     /* The repository that's under test. */
@@ -84,12 +82,6 @@ public abstract class AbstractRepositoryTest<T extends AbstractBaseRepository> {
         }
     }
 
-    /**
-     * Initialisation before each method. The testData is inserted using the locations passed in the {@link TestData}
-     * annotation and a repository is instantiated using an entityManager for this test data.
-     *
-     * @throws Exception
-     */
     @Before
     public void init() throws Exception {
         Class clazz = this.getClass();

@@ -12,5 +12,4 @@ public interface CustomerRepository extends Repository<Customer, Integer>{
 
     void createCustomer(Customer customer);
     Customer getCustomerByEmail(String email);
-    List<Flight> getFlightsForAirport(String arrivalId, String departureId);
 }

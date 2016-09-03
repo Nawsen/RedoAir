@@ -8,11 +8,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
-      url: '/',
-    })
     .state('overview', {
-      url: '/overview',
+      url: '/',
       templateUrl: 'app/views/overview.html',
       controller:'OverviewController',
       controllerAs: 'vm'

@@ -5,16 +5,13 @@
     <div class="container container-auth z-depth-2 grey lighten-4 col s12 m8 l4 offset-l4 offset-m2">
       <div class="logintabs">
         <ul class="tabs">
-          <li class="tab"><a href="#login">Login</a></li>
+          <li class="tab"><a class="active" href="#login">Login</a></li>
           <li class="tab"><a href="#register">Register</a></li>
         </ul>
       </div>
 
-
-
-
       <!--Login Part-->
-      <div id="login" class="row login-custom-card col" style="">
+      <div id="login" class="row login-custom-card col">
 
         <form class="col s12">
           <div class='row'>
@@ -46,12 +43,6 @@
           </div>
         </form>
       </div>
-
-
-
-
-
-
 
       <!--Register Part-->
       <div id="register" class="row login-custom-card">
@@ -102,3 +93,9 @@
     </div>
   </div>
 </div>
+<!--
+This fixes tab materialize error
+$(document).ready(function(){
+$('ul.tabs').tabs();
+});
+-->

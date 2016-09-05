@@ -1,6 +1,7 @@
 package com.realdolmen.controller;
 
 
+import com.realdolmen.VO.CustomerFlightVO;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.service.FlightService;
 
@@ -23,7 +24,7 @@ public class FlightController {
     @GET
     @Path("find")
     @Produces(value = MediaType.APPLICATION_JSON)
-    public List<Flight> findFlights(@QueryParam("departure") String departureCode, @QueryParam("arrival") String arrivalCode){
+    public List<CustomerFlightVO> findFlights(@QueryParam("departure") String departureCode, @QueryParam("arrival") String arrivalCode){
         return service.findFlights(departureCode, arrivalCode);
     }
 }

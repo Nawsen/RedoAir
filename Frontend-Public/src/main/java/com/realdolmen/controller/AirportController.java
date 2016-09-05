@@ -1,6 +1,7 @@
 package com.realdolmen.controller;
 
 import com.realdolmen.domain.Airport;
+import com.realdolmen.filters.Auth;
 import com.realdolmen.service.AirportService;
 
 import javax.ejb.Stateless;

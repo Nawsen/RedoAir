@@ -1,0 +1,9 @@
+<dataset>
+    <customer id="1000" firstName="Jos" lastName="Vermeulen" email="mathias@bulte.xyz" creditCard="abc-123" password="$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u"/>
+    <customer id="1001" firstName="Flip" lastName="Vermeulen" email="m@bulte.xyz" creditCard="abc-1234" password="$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u"/>
+    <customer id="1002" firstName="Jan" lastName="Vermeulen" email="ma@bulte.xyz" creditCard="abc-1235" password="$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u"/>
+    <customer id="1003" firstName="Piet" lastName="Vermeulen" email="mat@bulte.xyz" creditCard="abc-1236" password="$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u"/>
+    <customer id="1004" firstName="Andy" lastName="Samberg" email="math@bulte.xyz" creditCard="abc-1237" password="$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u"/>
+    <customer id="1005" firstName="Terry" lastName="Crews" email="mathi@bulte.xyz" creditCard="abc-1239" password="$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u"/>
+</dataset>
+        <!--$2a$10$S1Kljn0awN2zTGARMTvBGu5QuyGmA.NV3gnoCSsbv3QZfZroVlw3u = wachtwoord-->

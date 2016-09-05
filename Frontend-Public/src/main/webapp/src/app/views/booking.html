@@ -1,0 +1,118 @@
+<div class="container">
+    <form>
+        <div class="card s8">
+            <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Booking<i
+                class="material-icons right">more_vert</i></span>
+                <!--<p><a href="#">This is a link</a></p>-->
+                <!--<p>Testing</p>-->
+                <!--<p class="text">I am Flow Text</p>-->
+                <!--<label>Browser Select</label>-->
+
+
+                <div class="row">
+                    <div class="s6">
+                        <h4>SEAT TYPE</h4>
+                        <select class="browser-default">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option ng-repeat="value in vm.seatClass track by $index" value="{{$index}}">{{value}}
+                            </option>
+                        </select>
+                    </div>
+                    <!--<div class="s6">-->
+                    <!--<h4>NUMBEROFSEATS</h4>-->
+                    <!--<p class="range-field">-->
+                    <!--<input type="range" id="test5" min="1" max="10" ng-model="vm.numberOfSeats"/>-->
+                    <!--</p>-->
+                    <!--</div>-->
+                </div>
+                <div class="row" ng-repeat="seat in vm.seats track by $index">
+                    <div class="input-field col s5">
+                        <input id="first_name{{$index}}" type="text" class="validate" ng-model="seat.firstName">
+                        <label for="first_name{{$index}}">First Name</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input id="last_name{{$index}}" type="text" class="validate" ng-model="seat.lastName">
+                        <label for="last_name{{$index}}">Last Name</label>
+                    </div>
+                    <span class="input-field col s2">
+                        <a ng-click="vm.removeSeat($index)">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </span>
+                </div>
+                <a class="btn-floating btn-large waves-effect waves-light red right horizontal"
+                   ng-click="vm.addSeat()"><i class="material-icons">add</i></a>
+
+
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card s8">
+            <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Booking<i
+                class="material-icons right">more_vert</i></span>
+                <!--<p><a href="#">This is a link</a></p>-->
+                <!--<p>Testing</p>-->
+                <!--<p class="text">I am Flow Text</p>-->
+                <!--<label>Browser Select</label>-->
+
+
+                <div class="row">
+                    <div class="s6">
+                        <h4>SEAT TYPE</h4>
+                        <select class="browser-default">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option ng-repeat="value in vm.seatClass track by $index" value="{{$index}}">{{value}}
+                            </option>
+                        </select>
+                    </div>
+                    <!--<div class="s6">-->
+                    <!--<h4>NUMBEROFSEATS</h4>-->
+                    <!--<p class="range-field">-->
+                    <!--<input type="range" id="test5" min="1" max="10" ng-model="vm.numberOfSeats"/>-->
+                    <!--</p>-->
+                    <!--</div>-->
+                </div>
+                <div class="row" ng-repeat="seat in vm.seats track by $index">
+                    <div class="input-field col s5">
+                        <input id="first_name{{$index}}" type="text" class="validate" ng-model="seat.firstName">
+                        <label for="first_name{{$index}}">First Name</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input id="last_name{{$index}}" type="text" class="validate" ng-model="seat.lastName">
+                        <label for="last_name{{$index}}">Last Name</label>
+                    </div>
+                    <span class="input-field col s2">
+                        <a ng-click="vm.removeSeat($index)">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </span>
+                </div>
+                <a class="btn-floating btn-large waves-effect waves-light red right horizontal"
+                   ng-click="vm.addSeat()"><i class="material-icons">add</i></a>
+
+
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--<div class="row">-->
+<!--<div class="input-field col s8">-->
+<!--<input type="text" ng-model="vm.card.number" ng-required="true"/>-->
+<!--</div>-->
+<!--<div class="input-field col s2">-->
+<!--<input type="text" ng-model="vm.card.month" ng-required="true"/>-->
+<!--</div>-->
+<!--<div class="input-field col s2">-->
+<!--<input type="text" ng-model="vm.card.year" ng-required="true"/>-->
+<!--</div>-->
+<!--</div>-->

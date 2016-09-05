@@ -1,12 +1,16 @@
 package com.realdolmen.service.beans;
 
+import com.realdolmen.VO.CustomerFlightVO;
 import com.realdolmen.domain.Flight;
+import com.realdolmen.domain.MapperType;
+import com.realdolmen.qualifiers.EntityMapper;
 import com.realdolmen.repository.FlightRepository;
-import com.realdolmen.repository.beans.FlightRepositoryBean;
 import com.realdolmen.service.FlightService;
+import ma.glasnost.orika.MapperFacade;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,12 +18,21 @@ import java.util.List;
  */
 @Stateless
 public class FlightServiceBean implements FlightService {
+
     @Inject
     private FlightRepository flightRepo;
 
+    @Inject
+    @EntityMapper(type = MapperType.CUSTOMER_FLIGHTS)
+    private MapperFacade customerFlightMapper;
+
     @Override
-    public List<Flight> findFlights(String arrivalId, String departureId) {
-        return flightRepo.getFlightsForAirport(arrivalId, departureId);
+    public List<CustomerFlightVO> findFlights(String arrivalId, String departureId) {
+        List<CustomerFlightVO> vos = new ArrayList<>();
+        for (Flight f: flightRepo.getFlightsForAirport(arrivalId, departureId)){
+            vos.add(customerFlightMapper.map(f, CustomerFlightVO.class));
+        }
+        return vos;
     }
 
 }

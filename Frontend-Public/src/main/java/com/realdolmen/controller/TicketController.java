@@ -1,7 +1,10 @@
 package com.realdolmen.controller;
 
+import com.realdolmen.qualifiers.Auth;
+
 import javax.ejb.Stateless;
 import javax.persistence.criteria.Order;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -15,8 +18,9 @@ import java.util.List;
 public class TicketController {
 
     @Path("orders")
+    @Auth
     @Produces(value = MediaType.APPLICATION_JSON)
-    public List<Order> getOrdersFromCustomer(Long customerId) {
+    public List<Order> getOrdersFromCustomer(@HeaderParam("email") String email) {
         return null;
     }
 }

@@ -1,11 +1,9 @@
-package com.realdolmen.domain;
+package com.realdolmen.VO;
 
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.filters.FilterChain;
-import com.openpojo.reflection.filters.FilterClassName;
 import com.openpojo.reflection.filters.FilterPackageInfo;
 import com.openpojo.reflection.impl.PojoClassFactory;
-
 import com.openpojo.validation.Validator;
 import com.openpojo.validation.ValidatorBuilder;
 import com.openpojo.validation.affirm.Affirm;
@@ -23,10 +21,10 @@ import java.util.List;
 public class PojoTest {
 
     // Configured for expectation, so we know when a class gets added or removed.
-    private static final int EXPECTED_CLASS_COUNT = 12;
+    private static final int EXPECTED_CLASS_COUNT = 4;
 
     // The package to test
-    private static final String POJO_PACKAGE = "com.realdolmen.domain";
+    private static final String POJO_PACKAGE = "com.realdolmen.VO";
 
     @Test
     public void ensureExpectedPojoCount() {

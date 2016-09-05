@@ -2,7 +2,6 @@ package com.realdolmen.service.beans;
 
 import com.realdolmen.domain.Airport;
 import com.realdolmen.repository.AirportRepository;
-import com.realdolmen.repository.beans.AirportRepositoryBean;
 import com.realdolmen.service.AirportService;
 
 import javax.ejb.Stateless;

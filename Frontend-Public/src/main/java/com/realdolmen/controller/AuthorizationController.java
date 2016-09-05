@@ -1,5 +1,7 @@
 package com.realdolmen.controller;
 
+import com.realdolmen.VO.CustomerLoginVO;
+import com.realdolmen.VO.CustomerRegisterVO;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.service.CustomerService;
 
@@ -24,14 +26,14 @@ public class AuthorizationController {
     @POST
     @Path("/create")
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public void createCustomer(Customer customer) {
+    public void createCustomer(CustomerRegisterVO customer) {
         service.createCustomer(customer);
     }
 
     @POST
     @Path("/login")
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public Response login(Customer customer) {
+    public Response login(CustomerLoginVO customer) {
         String JWT = service.login(customer);
         if (JWT != null) {
             return Response.ok(JWT).build();

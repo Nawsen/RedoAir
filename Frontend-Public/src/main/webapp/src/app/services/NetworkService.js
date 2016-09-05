@@ -7,11 +7,12 @@
     .module('app')
     .factory('NetworkService', [
       '$http',
+        'Constants',
       NetworkService
     ]);
 
-  function NetworkService($http) {
-    var BASE_URL = 'http://localhost:8080/frontend-public/api/';
+  function NetworkService($http, Constants) {
+    var BASE_URL = Constants.BASE_URL;
     return {
       getAllAirports: function () {
         return $http.get(BASE_URL + 'airport/all');

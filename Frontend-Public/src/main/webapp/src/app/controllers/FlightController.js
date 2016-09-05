@@ -8,16 +8,21 @@
             '$stateParams',
             '$state',
             'BookingService',
+            'AuthenticationService',
             FlightController
         ]);
 
-    function FlightController($scope, NetworkService, $stateParams, $state, BookingService) {
+    function FlightController($scope, NetworkService, $stateParams, $state, BookingService, AuthenticationService) {
         var vm = this;
 
 
         vm.go = function (flight) {
             BookingService.selectedFlight = flight;
-            $state.go('account');
+            if (AuthenticationService.isLoggedIn()) {
+                $state.go('booking');
+            } else {
+                $state.go('account', {fromFlight: true});
+            }
         };
 
 

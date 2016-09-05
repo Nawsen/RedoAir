@@ -3,9 +3,11 @@ package com.realdolmen.service.beans;
 import com.auth0.jwt.JWTSigner;
 import com.realdolmen.VO.CustomerLoginVO;
 import com.realdolmen.VO.CustomerRegisterVO;
+import com.realdolmen.domain.ApplicationSettings;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.MapperType;
 import com.realdolmen.qualifiers.EntityMapper;
+import com.realdolmen.repository.ApplicationSettingsRepository;
 import com.realdolmen.repository.CustomerRepository;
 import com.realdolmen.service.CustomerService;
 import ma.glasnost.orika.MapperFacade;
@@ -23,6 +25,9 @@ public class CustomerServiceBean implements CustomerService {
 
     @Inject
     private CustomerRepository repo;
+
+    @Inject
+    private ApplicationSettingsRepository applicationSettingsRepo;
 
     @Inject
     @EntityMapper(type = MapperType.CUSTOMER_REGISTER)
@@ -44,11 +49,11 @@ public class CustomerServiceBean implements CustomerService {
     }
 
     private String CreateJwt(Customer customer){
-        final String issuer = "https://localhost:8080/";
-        final String secret = "Very_Secret";
+        final String issuer = applicationSettingsRepo.findValue("JWT_URL");
+        final String secret = applicationSettingsRepo.findValue("JWT_SECRET");
 
         final long iat = System.currentTimeMillis() / 1000L;
-        final long exp = iat + 120L;
+        final long exp = iat + new Long(applicationSettingsRepo.findValue("JWT_VALID_FOR_SECONDS"));
 
         final JWTSigner signer = new JWTSigner(secret);
         final HashMap<String, Object> claims = new HashMap<String, Object>();

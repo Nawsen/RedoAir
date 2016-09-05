@@ -4,7 +4,9 @@ package com.realdolmen.filters;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.JWTVerifyException;
 import com.realdolmen.qualifiers.Auth;
+import com.realdolmen.repository.ApplicationSettingsRepository;
 
+import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -19,9 +21,12 @@ import java.util.Map;
 @Auth
 public class AuthFilter implements ContainerRequestFilter {
 
+    @Inject
+    private ApplicationSettingsRepository applicationSettingsRepository;
+
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        final String secret = "Very_Secret";
+        final String secret = applicationSettingsRepository.findValue("JWT_SECRET");
         try {
             final JWTVerifier verifier = new JWTVerifier(secret);
             final Map<String,Object> claims = verifier.verify(requestContext.getHeaderString("Authorization"));

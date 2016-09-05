@@ -1,4 +1,4 @@
-package com.realdolmen.filters;
+package com.realdolmen.qualifiers;
 
 import javax.ws.rs.NameBinding;
 import java.lang.annotation.ElementType;

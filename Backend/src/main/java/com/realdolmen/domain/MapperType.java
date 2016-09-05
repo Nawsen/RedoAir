@@ -5,5 +5,7 @@ package com.realdolmen.domain;
  */
 public enum  MapperType {
     UNDEFINED,
-    CUSTOMER_FLIGHTS
+    CUSTOMER_FLIGHTS,
+    CUSTOMER_LOGIN,
+    CUSTOMER_REGISTER
 }

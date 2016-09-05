@@ -1,6 +1,6 @@
 package com.realdolmen.controller;
 
-import com.realdolmen.filters.Auth;
+import com.realdolmen.qualifiers.Auth;
 
 import javax.ejb.Stateless;
 import javax.persistence.criteria.Order;

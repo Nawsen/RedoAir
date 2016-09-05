@@ -1,5 +1,7 @@
 package com.realdolmen.service;
 
+import com.realdolmen.VO.CustomerLoginVO;
+import com.realdolmen.VO.CustomerRegisterVO;
 import com.realdolmen.domain.Customer;
 
 /**
@@ -7,6 +9,6 @@ import com.realdolmen.domain.Customer;
  */
 public interface CustomerService {
 
-    void createCustomer(Customer customer);
-    String login(Customer customer);
+    void createCustomer(CustomerRegisterVO customer);
+    String login(CustomerLoginVO customer);
 }

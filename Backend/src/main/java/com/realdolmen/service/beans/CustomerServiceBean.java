@@ -1,9 +1,14 @@
 package com.realdolmen.service.beans;
 
 import com.auth0.jwt.JWTSigner;
+import com.realdolmen.VO.CustomerLoginVO;
+import com.realdolmen.VO.CustomerRegisterVO;
 import com.realdolmen.domain.Customer;
+import com.realdolmen.domain.MapperType;
+import com.realdolmen.qualifiers.EntityMapper;
 import com.realdolmen.repository.CustomerRepository;
 import com.realdolmen.service.CustomerService;
+import ma.glasnost.orika.MapperFacade;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.ejb.Stateless;
@@ -19,13 +24,20 @@ public class CustomerServiceBean implements CustomerService {
     @Inject
     private CustomerRepository repo;
 
-    public void createCustomer(Customer customer) {
+    @Inject
+    @EntityMapper(type = MapperType.CUSTOMER_REGISTER)
+    private MapperFacade customerRegisterMapper;
+
+    public void createCustomer(CustomerRegisterVO customer) {
         customer.setPassword(BCrypt.hashpw(customer.getPassword(), BCrypt.gensalt()));
-        repo.createCustomer(customer);
+
+        repo.createCustomer(customerRegisterMapper.map(customer, Customer.class));
     }
 
-    public String login(Customer customer) {
-        if (BCrypt.checkpw(customer.getLoginPassword(), repo.getCustomerByEmail(customer.getEmail()).getPassword())){
+    public String login(CustomerLoginVO customervo) {
+        Customer customer = repo.getCustomerByEmail(customervo.getEmail());
+
+        if (BCrypt.checkpw(customervo.getPassword(), customer.getPassword())){
             return CreateJwt(customer);
         }
         return null;

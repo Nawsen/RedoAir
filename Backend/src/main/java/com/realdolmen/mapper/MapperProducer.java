@@ -1,6 +1,9 @@
 package com.realdolmen.mapper;
 
 import com.realdolmen.VO.CustomerFlightVO;
+import com.realdolmen.VO.CustomerLoginVO;
+import com.realdolmen.VO.CustomerRegisterVO;
+import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.MapperType;
 import com.realdolmen.qualifiers.EntityMapper;
@@ -52,7 +55,31 @@ public class MapperProducer {
             case CUSTOMER_FLIGHTS:
                 configureCustomerFlightsMapper(factory);
                 break;
+            case CUSTOMER_LOGIN:
+                configureCustomerLoginMapper(factory);
+                break;
+            case CUSTOMER_REGISTER:
+                configureCustomerRegisterMapper(factory);
+                break;
         }
+    }
+
+    private void configureCustomerRegisterMapper(MapperFactory factory) {
+        factory.classMap(Customer.class, CustomerRegisterVO.class)
+                .field("firstName", "firstName")
+                .field("lastName", "lastName")
+                .field("email", "email")
+                .field("password", "password")
+                .byDefault()
+                .register();
+    }
+
+    private void configureCustomerLoginMapper(MapperFactory factory) {
+        factory.classMap(Customer.class, CustomerLoginVO.class)
+                .field("email", "email")
+                .field("password", "password")
+                .byDefault()
+                .register();
     }
 
     private void configureCustomerFlightsMapper(MapperFactory factory) {

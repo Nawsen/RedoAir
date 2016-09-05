@@ -4,6 +4,7 @@ import com.realdolmen.domain.Customer;
 import com.realdolmen.repository.beans.CustomerRepositoryBean;
 import com.realdolmen.utilities.persistence.TestData;
 import com.realdolmen.utilities.persistence.TestDataLocation;
+import org.hibernate.annotations.TypeDef;
 import org.junit.Test;
 
 import javax.persistence.NoResultException;
@@ -53,6 +54,11 @@ public class CustomerRepositoryTest extends AbstractRepositoryTest<CustomerRepos
         assertEquals(customer.getEmail(), getRepository().getCustomerByEmail("thisismymail").getEmail());
 
     }
+
+
+//    @Test
+//    @TestData(dataSet = TestDataLocation.DATA_CUSTOMERS)
+//    public void checkCustomerPasswordValid
 
 
 }

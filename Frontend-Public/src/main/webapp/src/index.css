@@ -43,6 +43,13 @@ body {
 .logintabs .tabs .indicator{
   background-color: #1904e9;
 }
+.remove-button{
+    margin-top: 2em;
+}
+.remove-button > a{
+    color: #d32f2f;
+    cursor: pointer;
+}
 
 /*Change color for inputfields & prefix*/
 /*START*/

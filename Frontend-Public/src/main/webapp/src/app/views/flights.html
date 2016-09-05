@@ -12,7 +12,7 @@
         <div class="col s5 title"><i class="material-icons left">flight_land</i> {{flight.arrivalIn.name}}</div>
         <div class="col s3"><i class="material-icons left">schedule</i> {{flight.arrivalTime | date : "medium" }}</div>
       </div>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <a href="#!" class="secondary-content" ng-click="vm.go(flight)"><i class="material-icons">grade</i></a>
     </li>
 
   </ul>

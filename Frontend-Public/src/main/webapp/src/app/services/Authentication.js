@@ -39,19 +39,24 @@ angular
         };
 
         auth.login = function (user) {
-            $http(
-                {
-                    method: 'POST',
-                    url: BASE_URL + 'customer/login',
-                    data: user
-                }
-            ).then(function successCallback(response) {
+            $http.post(BASE_URL + 'customer/login', user).then(function (response) {
                 auth.saveToken(response.data);
                 auth.setHeader();
                 Materialize.toast('Successfully logged in!', 1000);
-            }, function errorCallback(response) {
-                Materialize.toast(response, 1000);
+            }, function () {
+                Materialize.toast("Login failed", 1000);
             });
+            // $http(
+            //     {
+            //         method: 'POST',
+            //         url: BASE_URL + 'customer/login',
+            //         data: user
+            //     }
+            // ).then(function successCallback(response) {
+            //
+            // }, function errorCallback(response) {
+            //
+            // });
         };
         auth.setHeader = function () {
             $http.defaults.headers.common.Authorization = 'Bearer ' + auth.getToken();

@@ -7,10 +7,7 @@ import com.realdolmen.service.CustomerService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -36,11 +33,16 @@ public class AuthorizationController {
     @Consumes(value = MediaType.APPLICATION_JSON)
     @Produces(value = MediaType.TEXT_PLAIN)
     public Response login(CustomerLoginVO customer) {
-        String JWT = service.login(customer);
+        String JWT;
+        try {
+            JWT = service.login(customer);
+        } catch (Exception e) {
+            throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
+        }
         if (JWT != null) {
             return Response.ok(JWT).build();
         } else {
-            return Response.status(418).build();
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
 

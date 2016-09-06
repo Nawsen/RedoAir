@@ -38,7 +38,10 @@
                 email: "mathias@bulte.xyz",
                 password: "wachtwoord"
             });
-            proceed();
+
+            if (AuthenticationService.isLoggedIn()) {
+                proceed();
+            }
         };
 
         function proceed() {

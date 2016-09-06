@@ -2,9 +2,7 @@ package com.realdolmen.repository;
 
 import com.realdolmen.domain.Airport;
 import com.realdolmen.domain.Flight;
-import com.realdolmen.repository.beans.AbstractBaseRepository;
 import com.realdolmen.repository.beans.AirportRepositoryBean;
-import com.realdolmen.repository.beans.FlightRepositoryBean;
 import com.realdolmen.utilities.persistence.TestData;
 import com.realdolmen.utilities.persistence.TestDataLocation;
 import org.junit.Test;
@@ -36,25 +34,25 @@ public class AbstractBaseRepositoryTest extends AbstractRepositoryTest<AirportRe
     }
 
     @Test
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testFindByPrimaryKey(){
         assertEquals("BBR-548", getRepository().findByPrimaryKey(1000L).getCode());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testFindByPrimaryKeyNotValid(){
         getRepository().findByPrimaryKey(900L);
     }
 
     @Test
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testFindAll(){
         assertEquals(5, getRepository().findAll().size());
     }
 
     @Test
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testUpdate(){
         Airport a = getRepository().findByPrimaryKey(1000L);
         a.setCode("CHANGED");
@@ -74,7 +72,7 @@ public class AbstractBaseRepositoryTest extends AbstractRepositoryTest<AirportRe
     }
 
     @Test
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testDeleteById(){
         beginTransaction();
         getRepository().deleteById(1001L);
@@ -83,13 +81,13 @@ public class AbstractBaseRepositoryTest extends AbstractRepositoryTest<AirportRe
     }
 
     @Test(expected = EntityNotFoundException.class)
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testDeleteByIdWrong(){
         getRepository().deleteById(900L);
     }
 
     @Test
-    @TestData(dataSet = TestDataLocation.DATA1)
+    @TestData(dataSet = TestDataLocation.DATA_AIRPORT)
     public void testDeleteByEntity(){
         Airport a = getRepository().findByPrimaryKey(1000L);
         beginTransaction();

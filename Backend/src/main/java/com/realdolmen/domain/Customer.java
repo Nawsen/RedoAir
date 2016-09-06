@@ -3,6 +3,7 @@ package com.realdolmen.domain;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by WVDAZ49 on 31/08/2016.
@@ -11,14 +12,18 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "getCustomerByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email")
 })
+@Table(uniqueConstraints=@UniqueConstraint(columnNames="EMAIL"))
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
+    @Column(unique=true)
+    @NotNull
     private String email;
     private String creditCard;
+    @NotNull
     private String password;
     @Transient
     private String loginPassword;

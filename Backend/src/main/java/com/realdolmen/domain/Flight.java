@@ -1,6 +1,7 @@
 package com.realdolmen.domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -18,14 +19,16 @@ public class Flight {
     private Date departureTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalTime;
-    private Double basePrice;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     @ElementCollection
     private List<Discount> discounts;
     @OneToOne
     private Airport departedFrom;
     @OneToOne
     private Airport arrivalIn;
+    @OneToMany
+    @ElementCollection
+    private List<Ticket> tickets;
 
     public Flight() {
     }
@@ -62,14 +65,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
     }
 
-    public Double getBasePrice() {
-        return basePrice;
-    }
-
-    public void setBasePrice(Double basePrice) {
-        this.basePrice = basePrice;
-    }
-
     public List<Discount> getDiscounts() {
         return discounts;
     }
@@ -93,4 +88,13 @@ public class Flight {
     public void setArrivalIn(Airport arrivalIn) {
         this.arrivalIn = arrivalIn;
     }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
 }

@@ -12,6 +12,7 @@
         <class>com.realdolmen.domain.Person</class>
         <class>com.realdolmen.domain.SeatType</class>
         <class>com.realdolmen.domain.Ticket</class>
+        <class>com.realdolmen.domain.AccountType</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:h2:mem:appTestDatabase;MODE=Oracle"/>

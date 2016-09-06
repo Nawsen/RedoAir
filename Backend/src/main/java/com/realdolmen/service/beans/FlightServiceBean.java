@@ -28,11 +28,9 @@ public class FlightServiceBean implements FlightService {
 
     @Override
     public List<CustomerFlightVO> findFlights(String arrivalId, String departureId) {
-        List<CustomerFlightVO> vos = new ArrayList<>();
-        for (Flight f: flightRepo.getFlightsForAirport(arrivalId, departureId)){
-            vos.add(customerFlightMapper.map(f, CustomerFlightVO.class));
-        }
-        return vos;
+        List<Flight> vos = flightRepo.getFlightsForAirport(arrivalId, departureId);
+
+        return customerFlightMapper.mapAsList(vos, CustomerFlightVO.class);
     }
 
 }

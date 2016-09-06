@@ -1,6 +1,7 @@
 package com.realdolmen.domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by WVDAZ49 on 31/08/2016.
@@ -15,8 +16,10 @@ public class Ticket {
     private Boolean sold;
     @Embedded
     private Person person;
-    private Double purchasePrice;
-    private Double soldPrice;
+    private BigDecimal basePrice;
+    private BigDecimal overRidePrice;
+    private BigDecimal purchasePrice;
+    private BigDecimal soldPrice;
 
     public Ticket() {
     }
@@ -53,19 +56,35 @@ public class Ticket {
         this.person = person;
     }
 
-    public Double getPurchasePrice() {
+    public BigDecimal getOverRidePrice() {
+        return overRidePrice;
+    }
+
+    public void setOverRidePrice(BigDecimal overRidePrice) {
+        this.overRidePrice = overRidePrice;
+    }
+
+    public BigDecimal getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(Double purchasePrice) {
+    public void setPurchasePrice(BigDecimal purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public Double getSoldPrice() {
+    public BigDecimal getSoldPrice() {
         return soldPrice;
     }
 
-    public void setSoldPrice(Double soldPrice) {
+    public void setSoldPrice(BigDecimal soldPrice) {
         this.soldPrice = soldPrice;
+    }
+
+    public BigDecimal getBasePrice() {
+        return basePrice;
+    }
+
+    public void setBasePrice(BigDecimal basePrice) {
+        this.basePrice = basePrice;
     }
 }

@@ -10,6 +10,6 @@ import java.util.List;
 public interface FlightRepository extends Repository<Flight, Long>{
 
     List<Flight> getFlightsForAirport(String arrivalId, String departureId);
-
+    Flight getFlightFromId(Long flightId);
 
 }

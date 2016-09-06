@@ -3,9 +3,11 @@ package com.realdolmen.mapper;
 import com.realdolmen.VO.CustomerFlightVO;
 import com.realdolmen.VO.CustomerLoginVO;
 import com.realdolmen.VO.CustomerRegisterVO;
+import com.realdolmen.VO.TicketOrderDetailsVO;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.MapperType;
+import com.realdolmen.domain.Ticket;
 import com.realdolmen.qualifiers.EntityMapper;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
@@ -61,7 +63,16 @@ public class MapperProducer {
             case CUSTOMER_REGISTER:
                 configureCustomerRegisterMapper(factory);
                 break;
+            case FLIGHT_TICKET_DETAILS:
+                configureTicketDetails(factory);
         }
+    }
+
+    private void configureTicketDetails(MapperFactory factory) {
+        factory.classMap(Ticket.class, TicketOrderDetailsVO.class)
+                .field("seatType", "seatType")
+                .field("soldPrice", "price")
+                .register();
     }
 
     private void configureCustomerRegisterMapper(MapperFactory factory) {
@@ -70,7 +81,6 @@ public class MapperProducer {
                 .field("lastName", "lastName")
                 .field("email", "email")
                 .field("password", "password")
-                .byDefault()
                 .register();
     }
 
@@ -78,7 +88,6 @@ public class MapperProducer {
         factory.classMap(Customer.class, CustomerLoginVO.class)
                 .field("email", "email")
                 .field("password", "password")
-                .byDefault()
                 .register();
     }
 

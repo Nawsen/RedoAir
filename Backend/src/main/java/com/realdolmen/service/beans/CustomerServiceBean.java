@@ -13,8 +13,13 @@ import com.realdolmen.service.CustomerService;
 import ma.glasnost.orika.MapperFacade;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
+import javax.ws.rs.NotAuthorizedException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.util.HashMap;
 
 /**
@@ -40,7 +45,13 @@ public class CustomerServiceBean implements CustomerService {
     }
 
     public String login(CustomerLoginVO customervo) {
-        Customer customer = repo.getCustomerByEmail(customervo.getEmail());
+        Customer customer;
+//        try {
+            customer = repo.getCustomerByEmail(customervo.getEmail());
+//        } catch (Exception e) {
+//            // NoResultException didn't work.
+//            throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
+//        }
 
         if (BCrypt.checkpw(customervo.getPassword(), customer.getPassword())){
             return CreateJwt(customer);

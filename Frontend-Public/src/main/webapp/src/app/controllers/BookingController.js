@@ -6,19 +6,26 @@
             'NetworkService',
             'BookingService',
             '$scope',
+            '$timeout',
             BookingController
         ]);
 
-    function BookingController(NetworkService, BookingService, $scope) {
+    function BookingController(NetworkService, BookingService, $scope, $timeout) {
         var vm = this;
 
+
+        // Set default values
+        vm.birthDate = new Date("6 September, 2016");
+        vm.payment = 'CC';
         vm.numberOfSeats = 1;
         vm.seatClass = [
             "BUSINESS",
             "ECONOMY",
             "FIRST CLASS"
         ];
+        vm.seatType = vm.seatClass[0];
         vm.seats = [{}];
+
 
         vm.getNumber = function (num) {
             return new Array(num);
@@ -38,26 +45,37 @@
             console.log(index);
             console.log(vm.seats.splice(index, 1));
         };
+        vm.book = function () {
+            console.log($('.datepicker').val());
+        };
 
 
-        $scope.$watch('vm.numberOfSeats', function () {
-            // console.log('test1');
-            // if (vm.numberOfSeats >= vm.seats.length) {
-            //     console.log('test2');
-            //     for (var i = 0; i < vm.numberOfSeats - vm.seats.length; i++) {
-            //         vm.seats.push({});
-            //     }
-            // } else {
-            //     console.log('test3');
-            //     for (var i = vm.seats.length; i > vm.numberOfSeats; i--) {
-            //         vm.seats.pop();
-            //     }
-            // }
+        $scope.$watch("$('.datepicker').val()", function () {
+            console.log(vm.birthDate);
         });
+
+
+        vm.openDatePicker = function () {
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+        };
+        // vm.initializeDatePicker();
+        // function initializeDatePicker() {
+        //     $('.datepicker').pickadate({
+        //         selectMonths: true, // Creates a dropdown to control month
+        //         selectYears: 15 // Creates a dropdown of 15 years to control year
+        //     });
+        // }
+
 
         $(document).ready(function () {
             $('select').material_select();
         });
-
+        // $('.datepicker').pickadate({
+        //     selectMonths: true, // Creates a dropdown to control month
+        //     selectYears: 15 // Creates a dropdown of 15 years to control year
+        // });
     }
 })();

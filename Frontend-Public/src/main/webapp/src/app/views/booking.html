@@ -30,7 +30,7 @@
                     <label for="last_name{{$index}}">Last Name</label>
                 </div>
                 <div class="col s2 remove-button">
-                    <a ng-click="vm.removeSeat($index)">
+                    <a ng-if="vm.seats.length > 1" ng-click="vm.removeSeat($index)">
                         <i class="material-icons">delete</i>
                     </a>
                 </div>

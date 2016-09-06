@@ -21,6 +21,9 @@ public class AirportServiceBean implements AirportService {
         return repo.getAllAirports();
     }
     public List<Airport> getFilteredAirports(String filter){
+        if (filter==null){
+            throw new IllegalArgumentException("Filter must not be null;");
+        }
         return repo.getFilteredAirports(filter);
     }
 }

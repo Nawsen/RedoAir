@@ -46,12 +46,12 @@ public class CustomerServiceBean implements CustomerService {
 
     public String login(CustomerLoginVO customervo) {
         Customer customer;
-//        try {
+        try {
             customer = repo.getCustomerByEmail(customervo.getEmail());
-//        } catch (Exception e) {
-//            // NoResultException didn't work.
-//            throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
-//        }
+        } catch (Exception e) {
+            // NoResultException didn't work.
+            throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
+        }
 
         if (BCrypt.checkpw(customervo.getPassword(), customer.getPassword())){
             return CreateJwt(customer);

@@ -38,10 +38,10 @@ body {
   margin: 0 -0.74em;
 }
 .logintabs .tabs .tab a{
-  color: #1904e9;
+  color: #26a69a;
 }
 .logintabs .tabs .indicator{
-  background-color: #1904e9;
+  background-color: #26a69a;
 }
 .remove-button{
     margin-top: 2em;
@@ -57,17 +57,17 @@ body {
 .input-field input[type=text]:focus + label,
 .input-field input[type=email]:focus + label,
 .input-field input[type=password]:focus + label {
-  color: #1904e9;
+  color: #26a69a;
 }
 
 .input-field input[type=date]:focus,
 .input-field input[type=text]:focus,
 .input-field input[type=email]:focus,
 .input-field input[type=password]:focus {
-  border-bottom: 2px solid #1904e9;
+  border-bottom: 2px solid #26a69a;
   box-shadow: none;
 }
 .input-field .prefix.active{
-  color: #1904e9;
+  color: #26a69a;
 }
 /*END*/

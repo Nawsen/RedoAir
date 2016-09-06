@@ -16,7 +16,7 @@ import java.util.List;
  * Created by WVDAZ49 on 31/08/2016.
  */
 @Stateless
-public class AirportRepositoryBean extends AbstractBaseRepository<Airport, Integer> implements AirportRepository{
+public class AirportRepositoryBean extends AbstractBaseRepository<Airport, Long> implements AirportRepository{
 
     @Override
     public List<Airport> getAllAirports(){

@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Stateless
-public class FlightRepositoryBean extends AbstractBaseRepository<Flight, Integer> implements FlightRepository {
+public class FlightRepositoryBean extends AbstractBaseRepository<Flight, Long> implements FlightRepository {
 
     @PersistenceContext
     EntityManager em;

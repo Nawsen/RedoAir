@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Stateless
-public class CustomerRepositoryBean extends AbstractBaseRepository<Customer, Integer> implements CustomerRepository{
+public class CustomerRepositoryBean extends AbstractBaseRepository<Customer, Long> implements CustomerRepository{
 
 
 

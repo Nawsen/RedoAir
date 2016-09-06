@@ -67,7 +67,7 @@ public abstract class AbstractBaseRepository<T, PK extends Serializable> impleme
 
     @SuppressWarnings("unchecked")
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(PK id) {
         T ref = (T) entityManager.getReference(getEntityClass(), id);
         if (ref != null) {
             delete(ref);

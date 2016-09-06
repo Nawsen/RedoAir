@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * Created by WVDAZ49 on 3/09/2016.
  */
+
 public class PojoTest {
 
     // Configured for expectation, so we know when a class gets added or removed.

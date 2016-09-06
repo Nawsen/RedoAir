@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by WVDAZ49 on 3/09/2016.
  */
-public interface CustomerRepository extends Repository<Customer, Integer>{
+public interface CustomerRepository extends Repository<Customer, Long>{
 
     void createCustomer(Customer customer);
     Customer getCustomerByEmail(String email);

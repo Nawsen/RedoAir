@@ -1,0 +1,14 @@
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'BUSINESS',false,66.0,null,60.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'BUSINESS',false,66.0,null,60.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'BUSINESS',false,66.0,null,60.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'BUSINESS',false,66.0,null,60.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'BUSINESS',false,66.0,null,60.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'BUSINESS',false,66.0,null,60.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'FIRST_CLASS',false,82.5,null,75.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'FIRST_CLASS',false,82.5,null,75.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'FIRST_CLASS',false,82.5,null,75.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'FIRST_CLASS',false,82.5,null,75.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'ECONOMY',false,55.0,null,50.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'ECONOMY',false,55.0,null,50.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'ECONOMY',false,55.0,null,50.00);
+INSERT INTO `realdolmen`.`ticket` (birthDate,firstName,lastName,purchasePrice,seatType,sold,soldPrice,overRidePrice,basePrice) VALUES (null,null,null,null,'ECONOMY',false,55.0,null,50.00);

@@ -1,5 +1,6 @@
 package com.realdolmen.repository;
 
+import com.realdolmen.domain.Booking;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Flight;
 
@@ -12,4 +13,5 @@ public interface CustomerRepository extends Repository<Customer, Long>{
 
     void createCustomer(Customer customer);
     Customer getCustomerByEmail(String email);
+    List<Booking> getCustomerByEmailFetchBookings(String email);
 }

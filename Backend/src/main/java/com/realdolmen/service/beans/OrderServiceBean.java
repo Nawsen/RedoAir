@@ -9,7 +9,11 @@ import com.realdolmen.service.CustomerService;
 import com.realdolmen.service.FlightService;
 import com.realdolmen.service.OrderService;
 import ma.glasnost.orika.MapperFacade;
+import org.hibernate.Hibernate;
 
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
@@ -20,6 +24,7 @@ import java.util.List;
 /**
  * Created by WVDAZ49 on 6/09/2016.
  */
+@Stateless
 public class OrderServiceBean implements OrderService {
 
     @Inject
@@ -100,10 +105,11 @@ public class OrderServiceBean implements OrderService {
         return flightService.checkForFreeTickets(flight, tickets.get(0).getSeatType(), tickets.size());
     }
 
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Override
     public List<Booking> getAll(String email) {
-        Customer c = customerRepository.getCustomerByEmail(email);
-        return c.getBookings();
+        return customerRepository.getCustomerByEmailFetchBookings(email);
     }
 
     private List<Ticket> calculateTicketPricesForAvailableTickets(Flight f) {

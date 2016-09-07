@@ -9,17 +9,14 @@
             '$state',
             'BookingService',
             'AuthenticationService',
+            'Constants',
             FlightController
         ]);
 
-    function FlightController($scope, NetworkService, $stateParams, $state, BookingService, AuthenticationService) {
+    function FlightController($scope, NetworkService, $stateParams, $state, BookingService, AuthenticationService, Constants) {
         var vm = this;
 
-        vm.seatClass = [
-            "BUSINESS",
-            "ECONOMY",
-            "FIRST CLASS"
-        ];
+        vm.seatClass = Constants.SEATCLASS;
         vm.seatType = vm.seatClass[0];
         vm.go = function (flight) {
             console.log(flight);
@@ -31,6 +28,18 @@
             }
         };
 
+
+        vm.getSeatsByClass = function (flight, seatClass) {
+            console.log("test");
+            if (seatClass == "FIRST CLASS") {
+                seatClass = "FIRST_CLASS";
+            }
+            for (var i = 0; i < flight.availableSeats.length; i++) {
+                if (flight.availableSeats[i].type == seatClass) {
+                    return flight.availableSeats[i].amount;
+                }
+            }
+        };
 
         vm.test = function () {
             // console.log($('.datepicker').val());

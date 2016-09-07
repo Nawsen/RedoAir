@@ -12,7 +12,12 @@
 
     function Constants() {
         return {
-            BASE_URL: 'http://localhost:8080/frontend-public/api/'
+            BASE_URL: 'http://localhost:8080/frontend-public/api/',
+            SEATCLASS: [
+                "FIRST_CLASS",
+                "BUSINESS",
+                "ECONOMY"
+            ]
         }
     }
 

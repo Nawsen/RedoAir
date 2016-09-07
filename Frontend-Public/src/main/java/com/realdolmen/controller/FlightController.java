@@ -35,4 +35,12 @@ public class FlightController {
                                               ){
         return service.findFlights(departureCode, arrivalCode, new Date((long) (startDate*1000)), new Date((long) (endDate*1000)), type, free);
     }
+
+    @GET
+    @Path("find")
+    @Produces(value = MediaType.APPLICATION_JSON)
+    public List<CustomerFlightVO> findFlights(@QueryParam("departure") String departureCode,
+                                              @QueryParam("arrival") String arrivalCode){
+        return service.findFlights(departureCode, arrivalCode);
+    }
 }

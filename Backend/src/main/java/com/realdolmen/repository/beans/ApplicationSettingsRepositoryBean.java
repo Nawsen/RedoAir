@@ -14,8 +14,9 @@ import java.util.Map;
 /**
  * Created by WVDAZ49 on 5/09/2016.
  */
+
 @Stateless
-public class ApplicationSettingsRepositoryBean extends AbstractBaseRepository<ApplicationSettings, Integer>  implements ApplicationSettingsRepository {
+public class ApplicationSettingsRepositoryBean extends AbstractBaseRepository<ApplicationSettings, Integer> implements ApplicationSettingsRepository {
     @Override
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public ApplicationSettings find(String key) {
@@ -67,11 +68,16 @@ public class ApplicationSettingsRepositoryBean extends AbstractBaseRepository<Ap
             List<Object[]> result = query.getResultList();
             if (result.size() > 0) {
                 for (Object[] v : result) {
-                    values.put((String)v[0], (String)v[1]);
+                    values.put((String) v[0], (String) v[1]);
                 }
                 return values;
             }
         }
         return null;
+    }
+
+    @Override
+    public void saveDefault(ApplicationSettings applicationSettings) {
+        update(applicationSettings);
     }
 }

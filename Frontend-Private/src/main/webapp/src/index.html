@@ -33,8 +33,11 @@
   </nav>
 </header>
 <ul id="slide-out" class="side-nav fixed">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
+    <li class="side-nav-down title">
+        SUPER ADMIN PANEL
+    </li>
+    <li><a href="#!">Flight Settings</a></li>
+    <li><a ui-sref="appsettings">Application Settings</a></li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 <ui-view></ui-view>
@@ -55,5 +58,7 @@
 <!-- angular templates will be automatically converted in js and inserted here -->
 <!-- endinject -->
 <!-- endbuild -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+<script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
 </html>
 

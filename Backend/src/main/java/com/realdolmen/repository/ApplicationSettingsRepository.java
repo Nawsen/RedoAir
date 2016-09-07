@@ -16,5 +16,7 @@ public interface ApplicationSettingsRepository {
     String findValue(String key);
 
     Map<String, String> findValues(String... keys);
+
+    void saveDefault(ApplicationSettings applicationSettings);
 }
 

@@ -31,6 +31,8 @@ public class Customer {
 
     @ElementCollection
     private List<Booking> bookings;
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
 
     public Customer() {
     }
@@ -97,5 +99,13 @@ public class Customer {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 }

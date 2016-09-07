@@ -40,4 +40,17 @@ body {
     margin-top: 2em;
 }
 
+.side-nav-down{
+    padding: 1em;
+    color: blue;
+}
 
+header, main, footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}

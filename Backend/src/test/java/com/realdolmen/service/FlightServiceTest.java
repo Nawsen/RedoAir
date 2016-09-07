@@ -1,5 +1,6 @@
 package com.realdolmen.service;
 
+import com.realdolmen.domain.SeatType;
 import com.realdolmen.repository.FlightRepository;
 import com.realdolmen.service.beans.FlightServiceBean;
 import ma.glasnost.orika.MapperFacade;
@@ -28,7 +29,7 @@ public class FlightServiceTest {
 
     @Test
     public void checkIfFindFlightsIsCalled(){
-        service.findFlights("TestString", "TestString");
+        service.findFlights("TestString", "TestString", new java.util.Date((long)1472774400*1000), new java.util.Date((long)1473033600*1000), SeatType.BUSINESS, 2);
         verify(repo, times(1)).getFlightsForAirport("TestString", "TestString");
         verifyNoMoreInteractions(repo);
     }

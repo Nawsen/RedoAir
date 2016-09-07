@@ -1,19 +1,71 @@
 <div class="container">
-  <ul class="collection">
-    <li class="collection-item avatar" ng-repeat="flight in vm.flights track by $index">
-      <i class="material-icons circle green">local_airport</i>
-      <div class="row">
-        <div class="col s2 title">{{flight.departedFrom.code}}</div>
-        <div class="col s5 title"><i class="material-icons left">flight_takeoff</i> {{flight.departedFrom.name}}</div>
-        <div class="col s3"><i class="material-icons left">schedule</i> {{flight.departureTime | date : "medium" }}</div>
-      </div>
-      <div class="row">
-        <div class="col s2 title">{{flight.arrivalIn.code}}</div>
-        <div class="col s5 title"><i class="material-icons left">flight_land</i> {{flight.arrivalIn.name}}</div>
-        <div class="col s3"><i class="material-icons left">schedule</i> {{flight.arrivalTime | date : "medium" }}</div>
-      </div>
-      <a href="#!" class="secondary-content" ng-click="vm.go(flight)"><i class="material-icons">grade</i></a>
-    </li>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4" ng-click="vm.buttonClicked = !vm.buttonClicked">Search<i
+                class="material-icons right" ng-click="vm.buttonClicked = !vm.buttonClicked">more_vert</i></span>
+            <div ng-if="vm.buttonClicked">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="type" class="browser-default" ng-model="vm.seatType">
+                            <!--<option value="" disabled selected>Choose your option</option>-->
+                            <option ng-repeat="value in vm.seatClass track by $index" value="{{value}}">{{value}}
+                            </option>
+                        </select>
+                        <!--<label for="type">Select seat type</label>-->
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="airlineCompany" type="text" class="validate" ng-model="seat.lastName" required>
+                        <label for="airlineCompany">Last Name</label>
+                    </div>
+                </div>
 
-  </ul>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="startDate" type="date" class="datepicker" ng-model="vm.startDate"
+                               ng-change="vm.test()"
+                               ng-click="vm.openStartDatePicker()">
+                        <label for="startDate">Input date</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="endDate" type="date" class="datepicker" ng-model="vm.endDate"
+                               ng-click="vm.openEndDatePicker()">
+                        <label for="endDate">Input date</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="collection">
+        <li class="collection-item avatar" ng-repeat="flight in vm.flights track by $index">
+            <i class="material-icons circle green">local_airport</i>
+            <div class="row">
+                <div class="col s2 title">{{flight.departedFrom.code}}</div>
+                <div class="col s5 title"><i class="material-icons left">flight_takeoff</i>
+                    {{flight.departedFrom.name}}
+                </div>
+                <div class="col s3"><i class="material-icons left">schedule</i> {{flight.departureTime | date :
+                    "medium"
+                    }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2 title">{{flight.arrivalIn.code}}</div>
+                <div class="col s5 title"><i class="material-icons left">flight_land</i> {{flight.arrivalIn.name}}
+                </div>
+                <div class="col s3"><i class="material-icons left">schedule</i> {{flight.arrivalTime | date :
+                    "medium"
+                    }}
+                </div>
+            </div>
+
+            <a href="#!" class="secondary-content" ng-click="vm.go(flight)"><i class="material-icons">grade</i></a>
+            <!--<div>-->
+            <!--<div class="row"><span class="new badge green" data-badge-caption="BUSINESS">4</span></div>-->
+            <!--<div class="row"><span class="new badge green" data-badge-caption="FIRST CLASS">3</span></div>-->
+            <!--<div class="row"><span class="new badge green" data-badge-caption="ECONOMY">2</span></div>-->
+            <!--</div>-->
+
+        </li>
+    </ul>
 </div>

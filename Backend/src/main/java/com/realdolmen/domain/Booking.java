@@ -16,6 +16,9 @@ public class Booking {
     private List<Ticket> tickets;
     private Boolean paid;
 
+    @OneToOne
+    private Flight flight;
+
     @Transient
     private Long creditCardNumber;
     @Transient
@@ -82,5 +85,13 @@ public class Booking {
 
     public void setExpiryYear(Integer expiryYear) {
         this.expiryYear = expiryYear;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 }

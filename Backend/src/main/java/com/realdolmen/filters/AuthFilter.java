@@ -29,6 +29,7 @@ public class AuthFilter implements ContainerRequestFilter {
         final String secret = applicationSettingsRepository.findValue("JWT_SECRET");
         try {
             final JWTVerifier verifier = new JWTVerifier(secret);
+            System.out.println(requestContext.getHeaderString("Authorization").split(" ")[1]);
             final Map<String,Object> claims = verifier.verify(requestContext.getHeaderString("Authorization").split(" ")[1]);
             requestContext.getHeaders().add("email", claims.get("email").toString());
         } catch (JWTVerifyException e) {

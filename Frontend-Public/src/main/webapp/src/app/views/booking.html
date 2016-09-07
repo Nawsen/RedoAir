@@ -21,19 +21,19 @@
                     </div>
                 </div>
                 <div class="row" ng-repeat="seat in vm.booking.seats track by $index">
-                    <div class="input-field col s4">
+                    <div class="input-field col s5">
                         <input id="first_name{{$index}}" type="text" class="validate" ng-model="seat.firstName"
                                required>
                         <label for="first_name{{$index}}">First Name</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s5">
                         <input id="last_name{{$index}}" type="text" class="validate" ng-model="seat.lastName" required>
                         <label for="last_name{{$index}}">Last Name</label>
                     </div>
-                    <div class="input-field col s2">
-                        <input id="birthDate" type="date" class="datepicker" ng-model="vm.birthDate" ng-click="vm.openDatePicker()">
-                        <label for="birthDate">Input date</label>
-                    </div>
+                    <!--<div class="input-field col s2">-->
+                        <!--<input id="birthDate" type="date" class="datepicker" ng-model="vm.birthDate" ng-click="vm.openDatePicker()">-->
+                        <!--<label for="birthDate">Input date</label>-->
+                    <!--</div>-->
                     <div class="col s2 remove-button">
                         <a ng-if="vm.booking.seats.length > 1" ng-click="vm.removeSeat($index)">
                             <i class="material-icons">delete</i>

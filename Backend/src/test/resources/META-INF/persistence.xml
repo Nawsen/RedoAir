@@ -12,6 +12,7 @@
         <class>com.realdolmen.domain.Person</class>
         <class>com.realdolmen.domain.SeatType</class>
         <class>com.realdolmen.domain.Ticket</class>
+        <class>com.realdolmen.domain.AccountType</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:h2:mem:appTestDatabase;MODE=Oracle"/>
@@ -22,6 +23,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.connection.useUnicode" value="true"/>
             <property name="hibernate.id.new_generator_mappings" value="false"/>
+            <property name="javax.persistence.validation.mode" value="AUTO" />
         </properties>
     </persistence-unit>
 </persistence>

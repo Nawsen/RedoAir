@@ -1,0 +1,18 @@
+<dataset>
+    <airport id="1000" code="BBR-548" city="Brussel" country="België" region="Europa" name="vlieghaven van brussel"/>
+    <airport id="1001" code="QQL-228" city="Oostende" country="Belgie" region="Europa" name="Ostende vogelhaven"/>
+    <airport id="1002" code="BBB-284" city="Amsterdam" country="Nederland" region="Europa" name="Amsterdam grote vlieg"/>
+    <airport id="1003" code="PQD-627" city="Paris" country="France" region="Europa" name="Brol du Paris"/>
+    <airport id="1004" code="MML-349" city="Istanbul" country="Turkey" region="Afrika" name="Boemchakalaka"/>
+
+    <flight flightId="1000" arrivalTime="2016-09-03 14:45:00" departureTime="2016-09-03 10:20:00" flightNumber="25489756" arrivalIn_id="1000" departedFrom_id="1001"></flight>
+    <flight flightId="1001" arrivalTime="2016-08-03 14:45:00" departureTime="2016-09-03 10:20:00" flightNumber="45464567" arrivalIn_id="1000" departedFrom_id="1001"></flight>
+    <flight flightId="1002" arrivalTime="2016-07-03 19:45:00" departureTime="2016-09-03 15:20:00" flightNumber="45645678" arrivalIn_id="1000" departedFrom_id="1001"></flight>
+    <flight flightId="1003" arrivalTime="2016-06-03 10:45:00" departureTime="2016-09-03 06:20:00" flightNumber="89976786" arrivalIn_id="1001" departedFrom_id="1000"></flight>
+    <flight flightId="1004" arrivalTime="2016-05-03 09:45:00" departureTime="2016-09-03 05:20:00" flightNumber="13587945" arrivalIn_id="1001" departedFrom_id="1000"></flight>
+    <flight flightId="1005" arrivalTime="2016-04-03 19:45:00" departureTime="2016-09-03 17:20:00" flightNumber="49852643" arrivalIn_id="1001" departedFrom_id="1000"></flight>
+    <flight flightId="1006" arrivalTime="2016-03-03 13:45:00" departureTime="2016-09-03 10:20:00" flightNumber="45785478" arrivalIn_id="1003" departedFrom_id="1001"></flight>
+    <flight flightId="1007" arrivalTime="2016-03-03 18:45:00" departureTime="2016-09-03 15:20:00" flightNumber="89652374" arrivalIn_id="1003" departedFrom_id="1001"></flight>
+    <flight flightId="1008" arrivalTime="2016-09-03 14:45:00" departureTime="2016-09-03 12:20:00" flightNumber="72567846" arrivalIn_id="1003" departedFrom_id="1001"></flight>
+    <flight flightId="1009" arrivalTime="2016-09-03 19:45:00" departureTime="2016-09-03 16:20:00" flightNumber="96423558" arrivalIn_id="1004" departedFrom_id="1001"></flight>
+</dataset>

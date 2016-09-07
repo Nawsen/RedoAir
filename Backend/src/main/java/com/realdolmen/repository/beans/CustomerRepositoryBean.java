@@ -17,8 +17,6 @@ import java.util.List;
 @Stateless
 public class CustomerRepositoryBean extends AbstractBaseRepository<Customer, Long> implements CustomerRepository{
 
-
-
     public void createCustomer(Customer customer) {
         getEntityManager().persist(customer);
     }

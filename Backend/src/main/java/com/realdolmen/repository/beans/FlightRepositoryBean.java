@@ -15,14 +15,16 @@ import java.util.List;
 @Stateless
 public class FlightRepositoryBean extends AbstractBaseRepository<Flight, Long> implements FlightRepository {
 
-    @PersistenceContext
-    EntityManager em;
-
     @Override
     public List<Flight> getFlightsForAirport(String arrivalId, String departureId){
-        return em.createNamedQuery("findFlights", Flight.class)
+        return getEntityManager().createNamedQuery("findFlights", Flight.class)
                 .setParameter("departure", departureId)
                 .setParameter("arrival", arrivalId)
                 .getResultList();
+    }
+
+    @Override
+    public Flight getFlightFromId(Long flightId) {
+        return findByPrimaryKey(flightId);
     }
 }

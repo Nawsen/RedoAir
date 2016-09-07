@@ -2,8 +2,9 @@ package com.realdolmen.utilities.persistence;
 
 public enum TestDataLocation {
 
-    DATA1("data1.xml"),
-    DATA_CUSTOMERS("dataCustomers.xml");
+    DATA_AIRPORT("dataAirports.xml"),
+    DATA_CUSTOMERS("dataCustomers.xml"),
+    DATA_FLIGHT("dataFlights.xml");
 
     private String value;
 

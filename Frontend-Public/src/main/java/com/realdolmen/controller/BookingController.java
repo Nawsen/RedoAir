@@ -1,9 +1,7 @@
 package com.realdolmen.controller;
 
 import com.realdolmen.VO.BookingVO;
-import com.realdolmen.domain.Airport;
 import com.realdolmen.domain.Booking;
-import com.realdolmen.service.AirportService;
 import com.realdolmen.service.OrderService;
 
 import javax.ejb.Stateless;
@@ -29,6 +27,12 @@ public class BookingController {
         service.createBooking(email, booking);
     }
 
+    @GET
+    @Path("/all")
+    @Produces(value = MediaType.APPLICATION_JSON)
+    public List<Booking> getAllOrders(@HeaderParam("email") String email){
+        return service.getAll(email);
+    }
 //    @GET
 //    @Path("/all/{filter}")
 //    @Produces(value = MediaType.APPLICATION_JSON)

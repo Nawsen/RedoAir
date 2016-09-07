@@ -57,6 +57,12 @@ public class OrderServiceBean implements OrderService {
         customerRepository.update(customer);
     }
 
+    @Override
+    public List<Booking> getAll(String email) {
+        Customer c = customerRepository.getCustomerByEmail(email);
+        return c.getBookings();
+    }
+
     private List<Ticket> calculateTicketPricesForAvailableTickets(Flight f){
         Integer percProfit = Integer.parseInt(applicationSettingsRepository.findValue("PROFIT_PERCENTAGE"));
 

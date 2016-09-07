@@ -1,6 +1,8 @@
 package com.realdolmen.repository.beans;
 
 import com.realdolmen.domain.Flight;
+import com.realdolmen.domain.SeatType;
+import com.realdolmen.domain.Ticket;
 import com.realdolmen.repository.FlightRepository;
 
 import javax.ejb.Stateless;
@@ -27,4 +29,12 @@ public class FlightRepositoryBean extends AbstractBaseRepository<Flight, Long> i
     public Flight getFlightFromId(Long flightId) {
         return findByPrimaryKey(flightId);
     }
+
+    @Override
+    public Flight getFlightFromFlightNumber(Long flightNumber) {
+        return getEntityManager().createNamedQuery("findFlightByFlightNumber", Flight.class)
+                .setParameter("number", flightNumber.toString())
+                .getSingleResult();
+    }
+
 }

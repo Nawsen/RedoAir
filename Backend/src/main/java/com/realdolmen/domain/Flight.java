@@ -9,7 +9,10 @@ import java.util.List;
  * Created by WVDAZ49 on 31/08/2016.
  */
 @Entity
-@NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f WHERE f.departedFrom.code = :departure AND f.arrivalIn.code = :arrival")
+@NamedQueries({
+        @NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f WHERE f.departedFrom.code = :departure AND f.arrivalIn.code = :arrival"),
+        @NamedQuery(name = "findFlightByFlightNumber", query = "SELECT f FROM Flight f WHERE f.flightNumber = :number")
+})
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

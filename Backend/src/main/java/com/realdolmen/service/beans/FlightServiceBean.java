@@ -55,13 +55,15 @@ public class FlightServiceBean implements FlightService {
         return filteredFlights;
     }
 
-    private boolean checkForFreeTickets(Flight flight, SeatType type, Integer free) {
+    public boolean checkForFreeTickets(Flight flight, SeatType type, Integer free) {
         Map<SeatType, Integer> map = new HashMap<>();
         map.put(SeatType.BUSINESS, 0);
         map.put(SeatType.ECONOMY, 0);
         map.put(SeatType.FIRST_CLASS, 0);
         for (Ticket t : flight.getTickets()) {
-            map.put(t.getSeatType(), map.get(t.getSeatType()) + 1);
+            if (!t.getSold()) {
+                map.put(t.getSeatType(), map.get(t.getSeatType()) + 1);
+            }
         }
         if (map.containsKey(type)) {
             return map.get(type) >= free;

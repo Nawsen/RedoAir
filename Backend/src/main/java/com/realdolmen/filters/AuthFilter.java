@@ -1,10 +1,10 @@
 package com.realdolmen.filters;
 
 
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.JWTVerifyException;
 import com.realdolmen.qualifiers.Auth;
 import com.realdolmen.repository.ApplicationSettingsRepository;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;

@@ -33,8 +33,11 @@ public class BookingController {
     @GET
     @Path("/all")
     @Produces(value = MediaType.APPLICATION_JSON)
+    @Auth
     public List<Booking> getAllOrders(@HeaderParam("email") String email){
-        return service.getAll(email);
+
+        List<Booking> all = service.getAll(email);
+        return all;
     }
 //    @GET
 //    @Path("/all/{filter}")

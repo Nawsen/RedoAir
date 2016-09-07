@@ -33,7 +33,10 @@
             },
             postBooking: function (booking) {
                 return $http.post(BASE_URL + 'booking/order', booking);
-            }
+            },
+            getAllBookings: function () {
+                return $http.get(BASE_URL + 'booking/all');
+            },
 
         }
     }

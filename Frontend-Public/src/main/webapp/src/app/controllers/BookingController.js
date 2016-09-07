@@ -8,10 +8,11 @@
             '$scope',
             '$timeout',
             '$state',
+            'Constants',
             BookingController
         ]);
 
-    function BookingController(NetworkService, BookingService, $scope, $timeout, $state) {
+    function BookingController(NetworkService, BookingService, $scope, $timeout, $state, Constants) {
         if (BookingService.selectedFlight) {
             var vm = this;
 
@@ -20,11 +21,7 @@
             // Set default values
             vm.birthDate = new Date("6 September, 2016");
             vm.numberOfSeats = 1;
-            vm.seatClass = [
-                "BUSINESS",
-                "ECONOMY",
-                "FIRST CLASS"
-            ];
+            vm.seatClass = Constants.SEATCLASS;
             vm.booking = {};
             vm.booking.payment = 'CC';
             vm.booking.seatType = vm.seatClass[0];

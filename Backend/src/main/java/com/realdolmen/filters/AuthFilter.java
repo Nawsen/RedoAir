@@ -26,14 +26,21 @@ public class AuthFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        final String secret = applicationSettingsRepository.findValue("JWT_SECRET");
+        final String KEY = applicationSettingsRepository.findValue("JWT_SECRET");
+
         try {
-            final JWTVerifier verifier = new JWTVerifier(secret);
-            System.out.println(requestContext.getHeaderString("Authorization").split(" ")[1]);
-            final Map<String,Object> claims = verifier.verify(requestContext.getHeaderString("Authorization").split(" ")[1]);
-            requestContext.getHeaders().add("email", claims.get("email").toString());
-        } catch (JWTVerifyException e) {
-            throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
+            if (requestContext.getHeaderString("Authorization") != null) {
+                //we need to split off the non usefull things from the header
+                //in this case we need to chew off "Bearer "
+                String code = requestContext.getHeaderString("Authorization").split(" ")[1];
+                Claims claim = Jwts.parser().setSigningKey(KEY).parseClaimsJws(code).getBody();
+                //after we check if the claim is correct lets set the email into the header
+                //with this we can identify the user
+                requestContext.getHeaders().add("email", claim.getId());
+            } else {
+                throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
+            }
+            //requestContext.getHeaders().add("email", claims.get("email").toString());
         } catch (Exception e) {
             throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
         }

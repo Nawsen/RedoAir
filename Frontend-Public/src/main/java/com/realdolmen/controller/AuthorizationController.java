@@ -34,11 +34,9 @@ public class AuthorizationController {
     @Produces(value = MediaType.TEXT_PLAIN)
     public Response login(CustomerLoginVO customer) {
         String JWT;
-        try {
+
             JWT = service.login(customer);
-        } catch (Exception e) {
-            throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
-        }
+
         if (JWT != null) {
             return Response.ok(JWT).build();
         } else {

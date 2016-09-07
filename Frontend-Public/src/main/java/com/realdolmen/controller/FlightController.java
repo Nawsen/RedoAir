@@ -24,7 +24,7 @@ public class FlightController {
     private FlightService service;
 
     @GET
-    @Path("find")
+    @Path("findFilterd")
     @Produces(value = MediaType.APPLICATION_JSON)
     public List<CustomerFlightVO> findFlights(@QueryParam("departure") String departureCode,
                                               @QueryParam("arrival") String arrivalCode,

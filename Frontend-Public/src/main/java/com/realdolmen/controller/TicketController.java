@@ -21,11 +21,12 @@ public class TicketController {
     @Inject
     private OrderService service;
 
+    @GET
     @Path("all")
     @Auth
-    @Produces(value = MediaType.APPLICATION_JSON)
-    public List<Order> getOrdersFromCustomer(@HeaderParam("email") String email) {
-        return null;
+    @Produces(value = MediaType.TEXT_HTML)
+    public String getOrdersFromCustomer(@HeaderParam("email") String email) {
+        return "OK";
     }
 
     @GET

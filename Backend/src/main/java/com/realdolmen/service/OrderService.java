@@ -1,5 +1,6 @@
 package com.realdolmen.service;
 
+import com.realdolmen.VO.BookingVO;
 import com.realdolmen.VO.TicketOrderDetailsVO;
 
 import java.util.List;
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface OrderService {
     List<TicketOrderDetailsVO> getTicketOrderDetails(Long flightId);
+    void createBooking(String email, BookingVO bookingVO);
 }

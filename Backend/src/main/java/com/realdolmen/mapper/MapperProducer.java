@@ -1,13 +1,7 @@
 package com.realdolmen.mapper;
 
-import com.realdolmen.VO.CustomerFlightVO;
-import com.realdolmen.VO.CustomerLoginVO;
-import com.realdolmen.VO.CustomerRegisterVO;
-import com.realdolmen.VO.TicketOrderDetailsVO;
-import com.realdolmen.domain.Customer;
-import com.realdolmen.domain.Flight;
-import com.realdolmen.domain.MapperType;
-import com.realdolmen.domain.Ticket;
+import com.realdolmen.VO.*;
+import com.realdolmen.domain.*;
 import com.realdolmen.mapper.converter.AvailableSeatConverter;
 import com.realdolmen.qualifiers.EntityMapper;
 import ma.glasnost.orika.MapperFacade;
@@ -19,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
+import javax.persistence.criteria.Order;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,7 +61,17 @@ public class MapperProducer {
                 break;
             case FLIGHT_TICKET_DETAILS:
                 configureTicketDetails(factory);
+                break;
+            case BOOKING_CREATE:
+                configureBookingCreateMapper(factory);
+                break;
         }
+    }
+
+    private void configureBookingCreateMapper(MapperFactory factory) {
+        factory.classMap(Booking.class, BookingVO.class)
+                .byDefault()
+                .register();
     }
 
     private void configureTicketDetails(MapperFactory factory) {

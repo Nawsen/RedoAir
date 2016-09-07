@@ -1,12 +1,14 @@
 package com.realdolmen.service.beans;
 
+import com.realdolmen.VO.BookingVO;
 import com.realdolmen.VO.TicketOrderDetailsVO;
-import com.realdolmen.domain.Flight;
-import com.realdolmen.domain.MapperType;
-import com.realdolmen.domain.Ticket;
+import com.realdolmen.domain.*;
 import com.realdolmen.qualifiers.EntityMapper;
 import com.realdolmen.repository.ApplicationSettingsRepository;
+import com.realdolmen.repository.BookingRepository;
+import com.realdolmen.repository.CustomerRepository;
 import com.realdolmen.repository.FlightRepository;
+import com.realdolmen.service.CustomerService;
 import com.realdolmen.service.OrderService;
 import ma.glasnost.orika.MapperFacade;
 
@@ -27,13 +29,32 @@ public class OrderServiceBean implements OrderService {
     private ApplicationSettingsRepository applicationSettingsRepository;
 
     @Inject
+    private BookingRepository bookingRepository;
+
+    @Inject
+    private CustomerRepository customerRepository;
+
+    @Inject
     @EntityMapper(type = MapperType.FLIGHT_TICKET_DETAILS)
     private MapperFacade ticketFlightMapper;
+
+    @Inject
+    @EntityMapper(type = MapperType.BOOKING_CREATE)
+    private MapperFacade bookingMapper;
 
     @Override
     public List<TicketOrderDetailsVO> getTicketOrderDetails(Long flightId) {
         List<Ticket> t = calculateTicketPricesForAvailableTickets(flightRepo.getFlightFromId(flightId));
         return ticketFlightMapper.mapAsList(t, TicketOrderDetailsVO.class);
+    }
+
+    @Override
+    public void createBooking(String email, BookingVO bookingVO) {
+        Booking booking = bookingMapper.map(bookingVO, Booking.class);
+        Customer customer = customerRepository.getCustomerByEmail(email);
+        customer.getBookings().add(booking);
+        bookingRepository.insert(booking);
+        customerRepository.update(customer);
     }
 
     private List<Ticket> calculateTicketPricesForAvailableTickets(Flight f){

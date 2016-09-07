@@ -4,6 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by WVDAZ49 on 31/08/2016.
@@ -27,6 +28,9 @@ public class Customer {
     private String password;
     @Transient
     private String loginPassword;
+
+    @ElementCollection
+    private List<Booking> bookings;
 
     public Customer() {
     }
@@ -85,5 +89,13 @@ public class Customer {
 
     public void setLoginPassword(String loginPassword) {
         this.loginPassword = loginPassword;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

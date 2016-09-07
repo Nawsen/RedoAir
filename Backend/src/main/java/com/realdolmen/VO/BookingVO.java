@@ -1,39 +1,23 @@
-package com.realdolmen.domain;
+package com.realdolmen.VO;
 
-import javax.persistence.*;
+import com.realdolmen.domain.Airport;
+import com.realdolmen.domain.Ticket;
+
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created by WVDAZ49 on 31/08/2016.
+ * Created by WVDAZ49 on 1/09/2016.
  */
-@Entity
-public class Booking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @OneToMany
-    @ElementCollection
+public class BookingVO {
     private List<Ticket> tickets;
-    private Boolean paid;
-
-    @Transient
     private Long creditCardNumber;
-    @Transient
     private Integer cvc;
-    @Transient
     private Integer expiryMonth;
-    @Transient
     private Integer expiryYear;
 
-    public Booking() {
-    }
+    public BookingVO() {
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public List<Ticket> getTickets() {
@@ -42,14 +26,6 @@ public class Booking {
 
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
-    }
-
-    public Boolean getPaid() {
-        return paid;
-    }
-
-    public void setPaid(Boolean paid) {
-        this.paid = paid;
     }
 
     public Long getCreditCardNumber() {

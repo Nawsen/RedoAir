@@ -1,6 +1,7 @@
 package com.realdolmen.repository.beans;
 
 
+import com.realdolmen.domain.Booking;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.repository.CustomerRepository;
@@ -25,5 +26,11 @@ public class CustomerRepositoryBean extends AbstractBaseRepository<Customer, Lon
         return getEntityManager().createNamedQuery("getCustomerByEmail", Customer.class)
                 .setParameter("email", email)
                 .getSingleResult();
+    }
+    public List<Booking> getCustomerByEmailFetchBookings(String email) {
+        List<Booking> bookings = getEntityManager().createNamedQuery("getCustomerByEmailFetchBookings", Customer.class)
+                .setParameter("email", email)
+                .getSingleResult().getBookings();
+        return bookings;
     }
 }

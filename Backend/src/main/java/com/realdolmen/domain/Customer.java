@@ -11,7 +11,8 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "getCustomerByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email")
+        @NamedQuery(name = "getCustomerByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email"),
+        @NamedQuery(name = "getCustomerByEmailFetchBookings", query = "SELECT c FROM Customer c JOIN FETCH c.bookings WHERE c.email = :email")
 })
 @Table(uniqueConstraints=@UniqueConstraint(columnNames="EMAIL"))
 public class Customer {
@@ -30,6 +31,7 @@ public class Customer {
     private String loginPassword;
 
     @ElementCollection
+    @OneToMany
     private List<Booking> bookings;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;

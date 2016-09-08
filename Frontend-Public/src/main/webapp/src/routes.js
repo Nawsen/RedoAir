@@ -34,6 +34,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: 'app/views/booking.html',
             controller: 'BookingController',
             controllerAs: 'vm'
+        })
+        .state('booking-overview', {
+            url: '/mybookings',
+            templateUrl: 'app/views/booking-overview.html',
+            controller: 'BookingOverviewController',
+            controllerAs: 'vm'
         });
 }
 

@@ -11,7 +11,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @ElementCollection
     private List<Ticket> tickets;
     private Boolean paid;

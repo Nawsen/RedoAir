@@ -4,15 +4,15 @@ import com.realdolmen.VO.BookingVO;
 import com.realdolmen.VO.TicketOrderDetailsVO;
 import com.realdolmen.domain.*;
 import com.realdolmen.qualifiers.EntityMapper;
-import com.realdolmen.repository.ApplicationSettingsRepository;
-import com.realdolmen.repository.BookingRepository;
-import com.realdolmen.repository.CustomerRepository;
-import com.realdolmen.repository.FlightRepository;
+import com.realdolmen.repository.*;
 import com.realdolmen.service.CustomerService;
+import com.realdolmen.service.FlightService;
 import com.realdolmen.service.OrderService;
 import ma.glasnost.orika.MapperFacade;
 
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,12 @@ public class OrderServiceBean implements OrderService {
     private CustomerRepository customerRepository;
 
     @Inject
+    private TicketRepository ticketRepository;
+
+    @Inject
+    private FlightService flightService;
+
+    @Inject
     @EntityMapper(type = MapperType.FLIGHT_TICKET_DETAILS)
     private MapperFacade ticketFlightMapper;
 
@@ -51,10 +57,47 @@ public class OrderServiceBean implements OrderService {
     @Override
     public void createBooking(String email, BookingVO bookingVO) {
         Booking booking = bookingMapper.map(bookingVO, Booking.class);
+        Flight flight = flightRepo.getFlightFromFlightNumber(bookingVO.getFlightNumber());
         Customer customer = customerRepository.getCustomerByEmail(email);
         customer.getBookings().add(booking);
-        bookingRepository.insert(booking);
-        customerRepository.update(customer);
+
+
+        if (checkIfEnoughSeatsAreAvailable(flight, booking.getTickets())) {
+//            booking.getTickets().forEach(t -> t.setSold(true));
+            List<Ticket> availableTickets = getAvailableTicketsFromFlightBySeatType(flight, booking.getTickets().get(0).getSeatType());
+
+            for (int i = 0; i < booking.getTickets().size(); i++) {
+                Ticket currentTicket = availableTickets.get(i);
+                Person person = new Person();
+
+
+                person.setLastName(bookingVO.getTickets().get(i).getLastName());
+                person.setFirstName(bookingVO.getTickets().get(i).getFirstName());
+                currentTicket.setPerson(person);
+                currentTicket.setSold(true);
+            }
+            booking.getTickets().forEach(t -> ticketRepository.insert(t));
+            bookingRepository.insert(booking);
+            customerRepository.update(customer);
+        } else {
+            throw new WebApplicationException("Not enough seats available");
+        }
+
+    }
+
+    private List<Ticket> getAvailableTicketsFromFlightBySeatType(Flight flight, SeatType seatType) {
+        List<Ticket> availableTickets = new ArrayList<>();
+        flight.getTickets().forEach(t -> {
+            if (!t.getSold()) {
+                if (t.getSeatType() == seatType) {
+                    availableTickets.add(t);
+                }
+            }
+        });
+        return availableTickets;
+    }
+    private boolean checkIfEnoughSeatsAreAvailable(Flight flight, List<Ticket> tickets) {
+        return flightService.checkForFreeTickets(flight, tickets.get(0).getSeatType(), tickets.size());
     }
 
     @Override
@@ -63,7 +106,7 @@ public class OrderServiceBean implements OrderService {
         return c.getBookings();
     }
 
-    private List<Ticket> calculateTicketPricesForAvailableTickets(Flight f){
+    private List<Ticket> calculateTicketPricesForAvailableTickets(Flight f) {
         Integer percProfit = Integer.parseInt(applicationSettingsRepository.findValue("PROFIT_PERCENTAGE"));
 
         //list of all available tickets with their correct prices
@@ -71,11 +114,11 @@ public class OrderServiceBean implements OrderService {
 
         //we have to change the price for every ticket
         //so every time some1 makes a new order prices get recalculated
-        for(Ticket t: f.getTickets()){
+        for (Ticket t : f.getTickets()) {
             //check if ticket is still available
-            if (!t.getSold()){
+            if (!t.getSold()) {
                 //check if an overrideprice is set
-                if (t.getOverRidePrice() != null){
+                if (t.getOverRidePrice() != null) {
                     t.setSoldPrice(t.getOverRidePrice());
                 } else {
                     //calculate the sell price with default settings

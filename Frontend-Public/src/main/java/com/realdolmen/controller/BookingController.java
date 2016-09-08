@@ -2,6 +2,7 @@ package com.realdolmen.controller;
 
 import com.realdolmen.VO.BookingVO;
 import com.realdolmen.domain.Booking;
+import com.realdolmen.qualifiers.Auth;
 import com.realdolmen.service.OrderService;
 
 import javax.ejb.Stateless;
@@ -21,8 +22,10 @@ public class BookingController {
     private OrderService service;
 
     @POST
+
     @Path("/order")
     @Consumes(value = MediaType.APPLICATION_JSON)
+    @Auth
     public void createNewOrder(@HeaderParam("email") String email, BookingVO booking) {
         service.createBooking(email, booking);
     }

@@ -41,17 +41,25 @@
             <i class="material-icons circle green">local_airport</i>
             <div class="row">
                 <div class="col s2 title">{{flight.departedFrom.code}}</div>
-                <div class="col s5 title"><i class="material-icons left">flight_takeoff</i>
+                <div class="col s3 title"><i class="material-icons left">flight_takeoff</i>
                     {{flight.departedFrom.name}}
                 </div>
                 <div class="col s3"><i class="material-icons left">schedule</i> {{flight.departureTime | date :
                     "medium"
                     }}
                 </div>
+                <div class="col s4">
+                    <div class="chip" ng-repeat="seat in flight.availableSeats" ng-class="{'red': seat.amount == 0, 'orange': seat.amount < 5, 'green': seat.amount >= 5 }">
+                        {{seat.amount}} {{seat.type}}
+                    </div>
+                    <div class="chip red" ng-if="flight.availableSeats.length == 0" ng-repeat="class in vm.seatClass">
+                        0 {{class}}
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col s2 title">{{flight.arrivalIn.code}}</div>
-                <div class="col s5 title"><i class="material-icons left">flight_land</i> {{flight.arrivalIn.name}}
+                <div class="col s3 title"><i class="material-icons left">flight_land</i> {{flight.arrivalIn.name}}
                 </div>
                 <div class="col s3"><i class="material-icons left">schedule</i> {{flight.arrivalTime | date :
                     "medium"

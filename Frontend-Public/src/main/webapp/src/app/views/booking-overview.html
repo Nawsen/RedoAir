@@ -1,5 +1,4 @@
 <div class="container">
-    {{vm.bookings | json}}
     <div class="card">
         <div class="card-content">
             <span class="card-title activator grey-text text-darken-4" ng-click="vm.buttonClicked = !vm.buttonClicked">My bookings</span>
@@ -7,11 +6,42 @@
     </div>
     <ul class="collapsible popout" data-collapsible="accordion">
         <li ng-repeat="booking in vm.bookings">
-            <div class="collapsible-header"><i class="material-icons">event</i>First</div>
-            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            <div class="collapsible-header"><i class="material-icons">event</i>
+                {{booking.flight.departedFrom.name}} in {{booking.flight.departedFrom.location.country}}
+                to
+                {{booking.flight.arrivalIn.name}} in {{booking.flight.arrivalIn.location.country}}
+                on
+                {{booking.flight.departureTime | date}}
+            </div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">flight_takeoff</i>
+                        <span class="title">Tickets</span>
+
+                        <p>
+                        <ul class="collection">
+                            <li class="collection-item" ng-repeat="ticket in booking.tickets">
+                                {{ticket.person.firstName}} {{ticket.person.lastName}} <span class="badge">€{{ticket.price}}</span>
+                            </li>
+                        </ul>
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">credit_card</i>
+                        <span class="title">Total price</span>
+                        <p>
+                        <ul class="collection">
+                            <li class="collection-item">
+                                {{booking.tickets.length}} tickets x €{{booking.tickets[0].price}} <span class="badge">€{{booking.tickets.length * booking.tickets[0].price}}</span>
+                            </li>
+                        </ul>
+                        </p>
+                    </li>
+                </ul>
+            </div>
         </li>
     </ul>
-
 
 
 </div>

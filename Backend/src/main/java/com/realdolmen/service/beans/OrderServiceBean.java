@@ -92,9 +92,10 @@ public class OrderServiceBean implements OrderService {
                 person.setFirstName(bookingVO.getTickets().get(i).getFirstName());
                 currentTicket.setPerson(person);
                 currentTicket.setSold(true);
+                booking.getTickets().set(i, currentTicket);
             }
             booking.setFlight(flight);
-            booking.getTickets().forEach(t -> ticketRepository.insert(t));
+//            booking.getTickets().forEach(t -> ticketRepository.insert(t));
             booking.setPaid(true);
             bookingRepository.insert(booking);
             customerRepository.update(customer);
@@ -132,9 +133,6 @@ public class OrderServiceBean implements OrderService {
             BookingOverviewVO booking =
                     bookingOverviewMapper.map(b, BookingOverviewVO.class);
             b.getTickets().parallelStream().forEach(t -> {
-                System.out.println("HEREGOESPRICE");
-                System.out.println(t.getSeatType());
-                System.out.println(t.getSoldPrice());
                 tickets.add(ticketBookingOverviewMapper.map(t, TicketBookingOverviewVO.class));
             });
             booking.setFlight(flightBookingMapper.map(b.getFlight(), FlightVO.class));

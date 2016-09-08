@@ -23,7 +23,7 @@ public class Flight {
     private Date departureTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalTime;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @ElementCollection
     private List<Discount> discounts;
     @OneToOne

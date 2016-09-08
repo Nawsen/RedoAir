@@ -1,7 +1,6 @@
 package com.realdolmen.service.beans;
 
-import com.realdolmen.VO.BookingVO;
-import com.realdolmen.VO.TicketOrderDetailsVO;
+import com.realdolmen.VO.*;
 import com.realdolmen.domain.*;
 import com.realdolmen.qualifiers.EntityMapper;
 import com.realdolmen.repository.*;
@@ -50,8 +49,21 @@ public class OrderServiceBean implements OrderService {
     private MapperFacade ticketFlightMapper;
 
     @Inject
+    @EntityMapper(type = MapperType.TICKET_BOOKING_OVERVIEW)
+    private MapperFacade ticketBookingOverviewMapper;
+
+    @Inject
     @EntityMapper(type = MapperType.BOOKING_CREATE)
     private MapperFacade bookingMapper;
+
+    @Inject
+    @EntityMapper(type = MapperType.FLIGHT_BOOKING)
+    private MapperFacade flightBookingMapper;
+
+    @Inject
+    @EntityMapper(type = MapperType.BOOKING_OVERVIEW)
+    private MapperFacade bookingOverviewMapper;
+
 
     @Override
     public List<TicketOrderDetailsVO> getTicketOrderDetails(Long flightId) {
@@ -81,7 +93,9 @@ public class OrderServiceBean implements OrderService {
                 currentTicket.setPerson(person);
                 currentTicket.setSold(true);
             }
+            booking.setFlight(flight);
             booking.getTickets().forEach(t -> ticketRepository.insert(t));
+            booking.setPaid(true);
             bookingRepository.insert(booking);
             customerRepository.update(customer);
         } else {
@@ -106,10 +120,28 @@ public class OrderServiceBean implements OrderService {
     }
 
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     @Override
-    public List<Booking> getAll(String email) {
-        return customerRepository.getCustomerByEmailFetchBookings(email);
+    public List<BookingOverviewVO> getAll(String email) {
+
+//        return bookingOverviewMapper.mapAsList(customerRepository.getCustomerByEmailFetchBookings(email), BookingOverviewVO.class);
+        List<BookingOverviewVO> list = new ArrayList<>();
+        customerRepository.getCustomerByEmailFetchBookings(email).parallelStream().forEach(b -> {
+            List<TicketBookingOverviewVO> tickets = new ArrayList<>();
+
+
+            BookingOverviewVO booking =
+                    bookingOverviewMapper.map(b, BookingOverviewVO.class);
+            b.getTickets().parallelStream().forEach(t -> {
+                System.out.println("HEREGOESPRICE");
+                System.out.println(t.getSeatType());
+                System.out.println(t.getSoldPrice());
+                tickets.add(ticketBookingOverviewMapper.map(t, TicketBookingOverviewVO.class));
+            });
+            booking.setFlight(flightBookingMapper.map(b.getFlight(), FlightVO.class));
+            booking.setTickets(tickets);
+            list.add(booking);
+        });
+        return list;
     }
 
     private List<Ticket> calculateTicketPricesForAvailableTickets(Flight f) {

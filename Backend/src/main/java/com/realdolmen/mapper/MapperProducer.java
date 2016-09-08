@@ -14,7 +14,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
-import javax.persistence.criteria.Order;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,6 +69,15 @@ public class MapperProducer {
             case AVAILABLEFLIGHTS:
                 configureAvailableFlightsMapper(factory);
                 break;
+            case FLIGHT_BOOKING:
+                configureFlightBookingMapper(factory);
+                break;
+            case BOOKING_OVERVIEW:
+                configureBookingOverviewMapper(factory);
+                break;
+            case TICKET_BOOKING_OVERVIEW:
+                configureTicketBookingOverviewMapper(factory);
+                break;
         }
     }
 
@@ -82,6 +90,26 @@ public class MapperProducer {
                 .field("departedFrom", "departedFrom")
                 .field("arrivalIn", "arrivalIn")
                 .fieldMap("tickets" ,"ticketType").converter("ticketTypePriceConverter").add()
+                .register();
+    }
+
+    private void configureTicketBookingOverviewMapper(MapperFactory factory) {
+        factory.classMap(Ticket.class, TicketBookingOverviewVO.class)
+                .field("seatType", "seatType")
+                .field("person", "person")
+                .field("soldPrice", "price")
+                .register();
+    }
+
+    private void configureBookingOverviewMapper(MapperFactory factory) {
+        factory.classMap(Booking.class, BookingOverviewVO.class)
+                .byDefault()
+                .register();
+    }
+
+    private void configureFlightBookingMapper(MapperFactory factory) {
+        factory.classMap(Flight.class, FlightVO.class)
+                .byDefault()
                 .register();
     }
 

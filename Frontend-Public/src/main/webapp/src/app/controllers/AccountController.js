@@ -19,33 +19,42 @@
         vm.register = function () {
             NetworkService.postRegister(vm.user).then(function () {
                 Materialize.toast('Successfully registered!', 1000);
+                console.log(vm.login.user.email);
+                console.log(vm.login.user.password);
+                AuthenticationService.login({
+                    email: vm.user.email,
+                    password: vm.user.password
+                }, proceed, $stateParams.fromFlight);
             });
-            AuthenticationService.login({
-                email: vm.login.user.email,
-                password: vm.login.user.password
-            });
-            proceed();
+            // proceed($stateParams.fromFlight);
         };
 
         vm.login = {};
         vm.login.user = {
-            "email": "mathias@bulte.xyz",
-            "password":"wachtwoord"
+            // "email": "mathias@bulte.xyz",
+            // "password":"wachtwoord"
         };
 
         vm.logIn = function () {
             AuthenticationService.login({
-                email: "mathias@bulte.xyz",
-                password: "wachtwoord"
-            });
+                email: vm.login.user.email,
+                password: vm.login.user.password
+            }, proceed, $stateParams.fromFlight);
 
-            if (AuthenticationService.isLoggedIn()) {
-                proceed();
-            }
+            // if (AuthenticationService.isLoggedIn()) {
+            //     proceed();
+            // }
         };
 
-        function proceed() {
-            if ($stateParams.fromFlight) {
+        // function proceed() {
+        //     if ($stateParams.fromFlight) {
+        //         $state.go('booking');
+        //     } else {
+        //         $state.go('overview');
+        //     }
+        // }
+        function proceed(flight) {
+            if (flight) {
                 $state.go('booking');
             } else {
                 $state.go('overview');

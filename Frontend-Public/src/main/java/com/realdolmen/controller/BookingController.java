@@ -1,5 +1,6 @@
 package com.realdolmen.controller;
 
+import com.realdolmen.VO.BookingOverviewVO;
 import com.realdolmen.VO.BookingVO;
 import com.realdolmen.domain.Booking;
 import com.realdolmen.qualifiers.Auth;
@@ -34,9 +35,9 @@ public class BookingController {
     @Path("/all")
     @Produces(value = MediaType.APPLICATION_JSON)
     @Auth
-    public List<Booking> getAllOrders(@HeaderParam("email") String email){
+    public List<BookingOverviewVO> getAllOrders(@HeaderParam("email") String email){
 
-        List<Booking> all = service.getAll(email);
+        List<BookingOverviewVO> all = service.getAll(email);
         return all;
     }
 //    @GET

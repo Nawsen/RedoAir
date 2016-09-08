@@ -11,4 +11,5 @@ public interface CustomerService {
 
     void createCustomer(CustomerRegisterVO customer);
     String login(CustomerLoginVO customer);
+    String loginEmp(CustomerLoginVO customer);
 }

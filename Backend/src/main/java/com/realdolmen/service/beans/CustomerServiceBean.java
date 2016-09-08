@@ -61,6 +61,25 @@ public class CustomerServiceBean implements CustomerService {
         return null;
     }
 
+    @Override
+    public String loginEmp(CustomerLoginVO customer) {
+        Customer c;
+        try {
+            c = repo.getCustomerByEmail(customer.getEmail());
+            if (!c.getAccountType().equals(AccountType.EMPLOYEE)){
+                return null;
+            }
+        } catch (Exception e) {
+            // NoResultException didn't work.
+            return null;
+        }
+
+        if (BCrypt.checkpw(customer.getPassword(), c.getPassword())){
+            return CreateJwt(c);
+        }
+        return null;
+    }
+
     private String CreateJwt(Customer customer){
         //check if accounttype is set, if not set normal
         if(customer.getAccountType() == null){

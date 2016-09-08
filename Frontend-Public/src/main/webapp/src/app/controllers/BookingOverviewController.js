@@ -16,9 +16,11 @@
         if (AuthenticationService.isLoggedIn()) {
             var vm = this;
 
-            vm.bookings = NetworkService.getAllBookings().then(function (response) {
+            vm.bookings = [];
+            NetworkService.getAllBookings().then(function (response) {
+                vm.bookings = response.data;
                 console.log(response.data);
-                return response.data;
+                // return response.data;
             }, function () {
                 Materialize.toast("Couldn't get bookings", 1000);
             })

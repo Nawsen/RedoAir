@@ -29,8 +29,8 @@
 
         vm.login = {};
         vm.login.user = {
-            "email": "mathias@bulte.xyz",
-            "password":"wachtwoord"
+            // "email": "mathias@bulte.xyz",
+            // "password":"wachtwoord"
         };
 
         vm.logIn = function () {
@@ -39,9 +39,9 @@
                 password: "wachtwoord"
             }, proceed, $stateParams.fromFlight);
 
-            if (AuthenticationService.isLoggedIn()) {
-                proceed();
-            }
+            // if (AuthenticationService.isLoggedIn()) {
+            //     proceed();
+            // }
         };
 
         // function proceed() {

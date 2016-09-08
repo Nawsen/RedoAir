@@ -37,19 +37,12 @@
             AuthenticationService.login({
                 email: "mathias@bulte.xyz",
                 password: "wachtwoord"
-            });
+            }, proceed);
 
-            if (AuthenticationService.isLoggedIn()) {
-                proceed();
-            }
         };
 
         function proceed() {
-            if ($stateParams.fromFlight) {
-                $state.go('booking');
-            } else {
-                $state.go('overview');
-            }
+            $state.go('overview');
         }
         // AuthenticationService.currentUser();
 

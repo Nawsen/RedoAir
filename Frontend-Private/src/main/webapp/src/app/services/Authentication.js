@@ -38,10 +38,11 @@ angular
             });
         };
 
-        auth.login = function (user) {
+        auth.login = function (user, func) {
             $http.post(BASE_URL + 'customer/login', user).then(function (response) {
                 auth.saveToken(response.data);
                 auth.setHeader();
+                func();
                 Materialize.toast('Successfully logged in!', 1000);
             }, function () {
                 Materialize.toast("Login failed", 1000);

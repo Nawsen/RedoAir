@@ -19,12 +19,14 @@
         vm.register = function () {
             NetworkService.postRegister(vm.user).then(function () {
                 Materialize.toast('Successfully registered!', 1000);
+                console.log(vm.login.user.email);
+                console.log(vm.login.user.password);
+                AuthenticationService.login({
+                    email: vm.user.email,
+                    password: vm.user.password
+                }, proceed, $stateParams.fromFlight);
             });
-            AuthenticationService.login({
-                email: vm.login.user.email,
-                password: vm.login.user.password
-            });
-            proceed($stateParams.fromFlight);
+            // proceed($stateParams.fromFlight);
         };
 
         vm.login = {};
@@ -35,8 +37,8 @@
 
         vm.logIn = function () {
             AuthenticationService.login({
-                email: "mathias@bulte.xyz",
-                password: "wachtwoord"
+                email: vm.login.user.email,
+                password: vm.login.user.password
             }, proceed, $stateParams.fromFlight);
 
             // if (AuthenticationService.isLoggedIn()) {

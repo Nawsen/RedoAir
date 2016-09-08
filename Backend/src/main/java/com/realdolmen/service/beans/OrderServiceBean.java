@@ -81,6 +81,7 @@ public class OrderServiceBean implements OrderService {
                 currentTicket.setPerson(person);
                 currentTicket.setSold(true);
             }
+            booking.setFlight(flight);
             booking.getTickets().forEach(t -> ticketRepository.insert(t));
             bookingRepository.insert(booking);
             customerRepository.update(customer);

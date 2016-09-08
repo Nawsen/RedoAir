@@ -3,9 +3,36 @@
         <ul class="collapsible" data-collapsible="accordion">
             <li ng-repeat="value in vm.flights track by $index">
                 <div class="collapsible-header"><i class="material-icons">airplanemode_active</i>
-                    {{value.flightNumber}}, {{value.departedFrom.name}} -> {{value.arrivalIn.name}} : {{value.departureTime | date}}
+                    {{value.flightNumber}}, {{value.departedFrom.name}} -> {{value.arrivalIn.name}} :
+                    {{value.departureTime | date}}
                 </div>
-                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                <div class="collapsible-body">
+                    <div class="container topbot">
+                        <div class="row" ng-repeat="ticket in value.ticketType track by $index">
+                            <div class="switch col s4">
+                                <label>
+                                    Off
+                                    <input type="checkbox" ng-checked="ticket.overrideAmount"
+                                           ng-click="vm.enableDisable(ticket)">
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div>
+
+                            <div class="input-field col s4">
+                                <i class="material-icons prefix small">euro_symbol</i>
+                                <input placeholder="{{ticket.amount}}" id="ticket{{$index}}" type="number" class="validate"
+                                       ng-model="ticket.overrideAmount"
+                                        ng-disabled="!ticket.overrideAmount">
+                                <label for="ticket{{$index}}">{{ticket.type}}</label>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn right" ng-click="vm.submit(value)"><i
+                            class="material-icons right">send</i>Confirm</a>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>

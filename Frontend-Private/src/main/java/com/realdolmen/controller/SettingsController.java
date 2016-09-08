@@ -54,4 +54,13 @@ public class SettingsController {
     public List<EmployeeFlightVO> getFlightsOverride(){
         return flightService.findAvailableFlights();
     }
+
+    @POST
+    @Path("/flights")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @AuthEmp
+    public Response setFlightTicketOverridePrices(EmployeeFlightVO flight){
+        flightService.setFlightTicketOverridePrices(flight);
+        return Response.accepted().build();
+    }
 }

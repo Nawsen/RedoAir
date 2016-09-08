@@ -21,6 +21,10 @@ nav{
   width:20%;
 
 }
+.topbot{
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
 
 main {
   flex: 1 0 auto;

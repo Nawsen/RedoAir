@@ -18,4 +18,5 @@ public interface FlightService {
     List<CustomerFlightVO> findFlights(String departureCode, String arrivalCode);
     boolean checkForFreeTickets(Flight flight, SeatType type, Integer free);
     List<EmployeeFlightVO> findAvailableFlights();
+    void setFlightTicketOverridePrices(EmployeeFlightVO flight);
 }

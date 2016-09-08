@@ -3,6 +3,7 @@ package com.realdolmen.service.beans;
 import com.realdolmen.VO.AvailableSeatsVO;
 import com.realdolmen.VO.CustomerFlightVO;
 import com.realdolmen.VO.EmployeeFlightVO;
+import com.realdolmen.VO.TicketTypePriceVO;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.MapperType;
 import com.realdolmen.domain.SeatType;
@@ -14,6 +15,7 @@ import ma.glasnost.orika.MapperFacade;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -79,6 +81,23 @@ public class FlightServiceBean implements FlightService {
     @Override
     public List<EmployeeFlightVO> findAvailableFlights() {
         return availableFlightMapper.mapAsList(flightRepo.findAllAvailableFlights(), EmployeeFlightVO.class);
+    }
+
+    @Override
+    public void setFlightTicketOverridePrices(EmployeeFlightVO flight) {
+        Map<SeatType, Double> map = new HashMap<>();
+        for(TicketTypePriceVO vo:flight.getTicketType()){
+                map.put(vo.getType(), vo.getOverrideAmount());
+        }
+
+        flightRepo.getFlightFromId(flight.getFlightId()).getTickets().forEach(ticket -> {
+            if (map.get(ticket.getSeatType()) == null){
+                ticket.setOverRidePrice(null);
+            } else {
+                ticket.setOverRidePrice(BigDecimal.valueOf(map.get(ticket.getSeatType())));
+            }
+
+        });
     }
 
 }

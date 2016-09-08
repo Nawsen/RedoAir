@@ -17,8 +17,11 @@ public class AvailableSeatConverter extends BidirectionalConverter<List<Ticket>,
     public List<AvailableSeatsVO> convertTo(List<Ticket> tickets, Type<List<AvailableSeatsVO>> type) {
         List<AvailableSeatsVO> list = new ArrayList<>();
         Map<SeatType, Integer> map = new HashMap<>();
+        map.put(SeatType.FIRST_CLASS, 0);
+        map.put(SeatType.BUSINESS, 0);
+        map.put(SeatType.ECONOMY, 0);
         for(Ticket t:tickets){
-            if (map.get(t.getSeatType()) != null){
+            if (map.get(t.getSeatType()) != null && !t.getSold()){
                 map.put(t.getSeatType(),map.get(t.getSeatType()) + 1);
             } else {
                 map.put(t.getSeatType(), 1);

@@ -27,6 +27,9 @@ public class FlightServiceTest {
     @Mock
     private MapperFacade customerFlightMapper;
 
+    @Mock
+    private MapperFacade availableFlightMapper;
+
     @Test
     public void checkIfFindFlightsIsCalled(){
         service.findFlights("TestString", "TestString", new java.util.Date((long)1472774400*1000), new java.util.Date((long)1473033600*1000), SeatType.BUSINESS, 2);

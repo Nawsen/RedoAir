@@ -1,6 +1,7 @@
 package com.realdolmen.filters;
 
 
+import com.realdolmen.domain.AccountType;
 import com.realdolmen.qualifiers.Auth;
 import com.realdolmen.repository.ApplicationSettingsRepository;
 import io.jsonwebtoken.Claims;
@@ -18,7 +19,7 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 @Auth
-public class AuthFilter implements ContainerRequestFilter {
+public class RegularAuthFilter implements ContainerRequestFilter {
 
     @Inject
     private ApplicationSettingsRepository applicationSettingsRepository;
@@ -30,17 +31,23 @@ public class AuthFilter implements ContainerRequestFilter {
         try {
             if (requestContext.getHeaderString("Authorization") != null) {
                 //we need to split off the non usefull things from the header
-                //in this case we need to chew off "Bearer "
+                //in this case we need to chew off "Bearer"
                 String code = requestContext.getHeaderString("Authorization").split(" ")[1];
                 Claims claim = Jwts.parser().setSigningKey(KEY).parseClaimsJws(code).getBody();
                 //after we check if the claim is correct lets set the email into the header
                 //with this we can identify the user
-                requestContext.getHeaders().add("email", claim.getId());
+
+                if (claim.get("userperms").equals(AccountType.NORMAL.toString()) ||
+                        claim.get("userperms").equals(AccountType.EMPLOYEE.toString())){
+                    requestContext.getHeaders().add("email", claim.getId());
+                } else {
+                    throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
+                }
             } else {
                 throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
             }
-            //requestContext.getHeaders().add("email", claims.get("email").toString());
         } catch (Exception e) {
+            e.printStackTrace();
             throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());
         }
     }

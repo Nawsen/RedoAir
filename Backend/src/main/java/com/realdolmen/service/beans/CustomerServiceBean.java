@@ -2,6 +2,7 @@ package com.realdolmen.service.beans;
 
 import com.realdolmen.VO.CustomerLoginVO;
 import com.realdolmen.VO.CustomerRegisterVO;
+import com.realdolmen.domain.AccountType;
 import com.realdolmen.domain.Customer;
 import com.realdolmen.domain.MapperType;
 import com.realdolmen.qualifiers.EntityMapper;
@@ -44,7 +45,7 @@ public class CustomerServiceBean implements CustomerService {
 
         repo.createCustomer(customerRegisterMapper.map(customer, Customer.class));
     }
-
+    @Override
     public String login(CustomerLoginVO customervo) {
         Customer customer;
         try {
@@ -61,6 +62,11 @@ public class CustomerServiceBean implements CustomerService {
     }
 
     private String CreateJwt(Customer customer){
+        //check if accounttype is set, if not set normal
+        if(customer.getAccountType() == null){
+            customer.setAccountType(AccountType.NORMAL);
+        }
+
         final String KEY = applicationSettingsRepo.findValue("JWT_SECRET");
         System.out.println(KEY);
         //The JWT signature algorithm we will be using to sign the token
@@ -74,6 +80,7 @@ public class CustomerServiceBean implements CustomerService {
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
         JwtBuilder builder = Jwts.builder().setId(customer.getEmail())
                 .setIssuedAt(now)
+                .claim("userperms", customer.getAccountType())
                 .signWith(signatureAlgorithm, signingKey);
 
         return builder.compact();

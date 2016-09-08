@@ -3,9 +3,11 @@ package com.realdolmen.controller;
 import com.realdolmen.VO.ApplicationSettingsVO;
 import com.realdolmen.VO.CustomerLoginVO;
 import com.realdolmen.VO.CustomerRegisterVO;
+import com.realdolmen.domain.AccountType;
 import com.realdolmen.domain.ApplicationSettings;
 import com.realdolmen.domain.SeatType;
 import com.realdolmen.qualifiers.Auth;
+import com.realdolmen.qualifiers.AuthEmp;
 import com.realdolmen.service.ApplicationService;
 import com.realdolmen.service.CustomerService;
 
@@ -27,13 +29,13 @@ public class SettingsController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Auth
+    @AuthEmp
     public ApplicationSettingsVO getAllApplicationSettings(){
         return service.getAllSettings();
     }
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Auth
+    @AuthEmp
     public void setAllApplicationSettings(ApplicationSettingsVO vo){
         service.setAllSettings(vo);
     }

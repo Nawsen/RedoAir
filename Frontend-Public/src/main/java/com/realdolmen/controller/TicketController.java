@@ -1,6 +1,7 @@
 package com.realdolmen.controller;
 
 import com.realdolmen.VO.TicketOrderDetailsVO;
+import com.realdolmen.domain.AccountType;
 import com.realdolmen.qualifiers.Auth;
 import com.realdolmen.service.OrderService;
 

@@ -1,4 +1,4 @@
-package main.java.com.realdolmen.controller;
+package com.realdolmen.controller;
 
 import com.realdolmen.VO.CustomerLoginVO;
 import com.realdolmen.VO.CustomerRegisterVO;
@@ -21,13 +21,6 @@ public class AuthorizationController {
     private CustomerService service;
 
     @POST
-    @Path("/create")
-    @Consumes(value = MediaType.APPLICATION_JSON)
-    public void createCustomer(CustomerRegisterVO customer) {
-        service.createCustomer(customer);
-    }
-
-    @POST
     @Path("/login")
     @Consumes(value = MediaType.APPLICATION_JSON)
     @Produces(value = MediaType.TEXT_PLAIN)
@@ -44,15 +37,6 @@ public class AuthorizationController {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
-
-
-
-
-
-//    public List<Flight> findFlights(@QueryParam("departure") String departureCode, @QueryParam("arrival") String arrivalCode){
-//        return service.findFlights(departureCode, arrivalCode);
-//    }
-
 
 
 }

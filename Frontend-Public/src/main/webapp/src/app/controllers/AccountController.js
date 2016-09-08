@@ -24,7 +24,7 @@
                 email: vm.login.user.email,
                 password: vm.login.user.password
             });
-            proceed();
+            proceed($stateParams.fromFlight);
         };
 
         vm.login = {};
@@ -37,15 +37,22 @@
             AuthenticationService.login({
                 email: "mathias@bulte.xyz",
                 password: "wachtwoord"
-            });
+            }, proceed, $stateParams.fromFlight);
 
             if (AuthenticationService.isLoggedIn()) {
                 proceed();
             }
         };
 
-        function proceed() {
-            if ($stateParams.fromFlight) {
+        // function proceed() {
+        //     if ($stateParams.fromFlight) {
+        //         $state.go('booking');
+        //     } else {
+        //         $state.go('overview');
+        //     }
+        // }
+        function proceed(flight) {
+            if (flight) {
                 $state.go('booking');
             } else {
                 $state.go('overview');

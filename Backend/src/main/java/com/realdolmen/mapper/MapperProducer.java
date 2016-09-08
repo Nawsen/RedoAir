@@ -3,6 +3,7 @@ package com.realdolmen.mapper;
 import com.realdolmen.VO.*;
 import com.realdolmen.domain.*;
 import com.realdolmen.mapper.converter.AvailableSeatConverter;
+import com.realdolmen.mapper.converter.TicketTypePriceConverter;
 import com.realdolmen.qualifiers.EntityMapper;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
@@ -40,6 +41,7 @@ public class MapperProducer {
 
             //register Custom converters here
             converterFactory.registerConverter("availableSeatConverter", new AvailableSeatConverter());
+            converterFactory.registerConverter("ticketTypePriceConverter", new TicketTypePriceConverter());
 
             configureMapperFactory(factory, type);
             mappers.put(type, factory.getMapperFacade());
@@ -65,7 +67,22 @@ public class MapperProducer {
             case BOOKING_CREATE:
                 configureBookingCreateMapper(factory);
                 break;
+            case AVAILABLEFLIGHTS:
+                configureAvailableFlightsMapper(factory);
+                break;
         }
+    }
+
+    private void configureAvailableFlightsMapper(MapperFactory factory) {
+        factory.classMap(Flight.class, EmployeeFlightVO.class)
+                .field("flightId", "flightId")
+                .field("flightNumber", "flightNumber")
+                .field("departureTime", "departureTime")
+                .field("arrivalTime", "arrivalTime")
+                .field("departedFrom", "departedFrom")
+                .field("arrivalIn", "arrivalIn")
+                .fieldMap("tickets" ,"ticketType").converter("ticketTypePriceConverter").add()
+                .register();
     }
 
     private void configureBookingCreateMapper(MapperFactory factory) {

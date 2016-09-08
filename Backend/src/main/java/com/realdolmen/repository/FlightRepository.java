@@ -14,4 +14,5 @@ public interface FlightRepository extends Repository<Flight, Long>{
     List<Flight> getFlightsForAirport(String arrivalId, String departureId);
     Flight getFlightFromId(Long flightId);
     Flight getFlightFromFlightNumber(Long flightNumber);
+    List<Flight> findAllAvailableFlights();
 }

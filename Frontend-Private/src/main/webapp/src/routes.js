@@ -25,6 +25,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: 'app/views/appsettings.html',
             controller: 'AppsettingsController',
             controllerAs: 'vm'
+        })
+        .state('flightSettings', {
+            url: '/flightsettings',
+            templateUrl: 'app/views/flights.html',
+            controller: 'FlightController',
+            controllerAs: 'vm'
         });
 }
 

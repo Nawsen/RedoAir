@@ -8,6 +8,7 @@ import com.realdolmen.repository.FlightRepository;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +36,13 @@ public class FlightRepositoryBean extends AbstractBaseRepository<Flight, Long> i
         return getEntityManager().createNamedQuery("findFlightByFlightNumber", Flight.class)
                 .setParameter("number", flightNumber.toString())
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Flight> findAllAvailableFlights() {
+        return getEntityManager().createNamedQuery("allAvailableFlights", Flight.class)
+                .setParameter("now", new Date())
+                .getResultList();
     }
 
 }

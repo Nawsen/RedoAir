@@ -2,6 +2,7 @@ package com.realdolmen.service;
 
 
 import com.realdolmen.VO.CustomerFlightVO;
+import com.realdolmen.VO.EmployeeFlightVO;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.SeatType;
 
@@ -16,4 +17,5 @@ public interface FlightService {
 
     List<CustomerFlightVO> findFlights(String departureCode, String arrivalCode);
     boolean checkForFreeTickets(Flight flight, SeatType type, Integer free);
+    List<EmployeeFlightVO> findAvailableFlights();
 }

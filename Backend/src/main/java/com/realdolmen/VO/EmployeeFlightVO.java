@@ -1,40 +1,23 @@
-package com.realdolmen.domain;
+package com.realdolmen.VO;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
+import com.realdolmen.domain.Airport;
+
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by WVDAZ49 on 31/08/2016.
+ * Created by WVDAZ49 on 8/09/2016.
  */
-@Entity
-@NamedQueries({
-        @NamedQuery(name = "findFlights", query = "SELECT f FROM Flight f WHERE f.departedFrom.code = :departure AND f.arrivalIn.code = :arrival"),
-        @NamedQuery(name = "findFlightByFlightNumber", query = "SELECT f FROM Flight f WHERE f.flightNumber = :number"),
-        @NamedQuery(name = "allAvailableFlights", query = "SELECT f FROM Flight f WHERE f.departureTime > :now ORDER BY f.departureTime")
-})
-public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EmployeeFlightVO {
     private Long flightId;
     private String flightNumber;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date departureTime;
-    @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalTime;
-    @OneToMany
-    @ElementCollection
-    private List<Discount> discounts;
-    @OneToOne
     private Airport departedFrom;
-    @OneToOne
     private Airport arrivalIn;
-    @OneToMany
-    @ElementCollection
-    private List<Ticket> tickets;
+    private List<TicketTypePriceVO> ticketType;
 
-    public Flight() {
+    public EmployeeFlightVO() {
     }
 
     public Long getFlightId() {
@@ -69,14 +52,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
     }
 
-    public List<Discount> getDiscounts() {
-        return discounts;
-    }
-
-    public void setDiscounts(List<Discount> discounts) {
-        this.discounts = discounts;
-    }
-
     public Airport getDepartedFrom() {
         return departedFrom;
     }
@@ -93,12 +68,11 @@ public class Flight {
         this.arrivalIn = arrivalIn;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<TicketTypePriceVO> getTicketType() {
+        return ticketType;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTicketType(List<TicketTypePriceVO> ticketType) {
+        this.ticketType = ticketType;
     }
-
 }

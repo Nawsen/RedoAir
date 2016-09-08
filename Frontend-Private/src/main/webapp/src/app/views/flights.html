@@ -1,0 +1,12 @@
+<main>
+    <div class="container">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li ng-repeat="value in vm.flights track by $index">
+                <div class="collapsible-header"><i class="material-icons">airplanemode_active</i>
+                    {{value.flightNumber}}, {{value.departedFrom.name}} -> {{value.arrivalIn.name}} : {{value.departureTime | date}}
+                </div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+        </ul>
+    </div>
+</main>

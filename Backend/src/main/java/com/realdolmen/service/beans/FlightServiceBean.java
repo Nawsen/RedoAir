@@ -2,6 +2,7 @@ package com.realdolmen.service.beans;
 
 import com.realdolmen.VO.AvailableSeatsVO;
 import com.realdolmen.VO.CustomerFlightVO;
+import com.realdolmen.VO.EmployeeFlightVO;
 import com.realdolmen.domain.Flight;
 import com.realdolmen.domain.MapperType;
 import com.realdolmen.domain.SeatType;
@@ -27,6 +28,10 @@ public class FlightServiceBean implements FlightService {
     @Inject
     @EntityMapper(type = MapperType.CUSTOMER_FLIGHTS)
     private MapperFacade customerFlightMapper;
+
+    @Inject
+    @EntityMapper(type = MapperType.AVAILABLEFLIGHTS)
+    private MapperFacade availableFlightMapper;
 
     @Override
     public List<CustomerFlightVO> findFlights(String arrivalId, String departureId, Date startDate, Date endDate, SeatType type, Integer free) {
@@ -69,6 +74,11 @@ public class FlightServiceBean implements FlightService {
             return map.get(type) >= free;
         }
         return false;
+    }
+
+    @Override
+    public List<EmployeeFlightVO> findAvailableFlights() {
+        return availableFlightMapper.mapAsList(flightRepo.findAllAvailableFlights(), EmployeeFlightVO.class);
     }
 
 }

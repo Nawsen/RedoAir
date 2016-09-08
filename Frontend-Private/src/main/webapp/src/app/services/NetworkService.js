@@ -18,8 +18,10 @@
                 return $http.post(BASE_URL + 'settings', {
                     defaultProfit: settings.defaultProfit
                 });
+            },
+            getFlightSettings: function () {
+                return $http.get(BASE_URL + 'settings/flights');
             }
-
         }
     }
 

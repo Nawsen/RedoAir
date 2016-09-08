@@ -31,7 +31,7 @@ public class Customer {
     private String loginPassword;
 
     @ElementCollection
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Booking> bookings;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;

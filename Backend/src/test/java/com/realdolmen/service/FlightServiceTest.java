@@ -62,6 +62,7 @@ public class FlightServiceTest {
         t2.setSold(false);
         Ticket t3 = new Ticket();
         t3.setSeatType(SeatType.FIRST_CLASS);
+        t3.setSold(false);
         Ticket t4 = new Ticket();
         t4.setSeatType(SeatType.ECONOMY);
         t4.setSold(false);

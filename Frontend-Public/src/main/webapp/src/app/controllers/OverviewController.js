@@ -41,7 +41,7 @@
       NetworkService.getFilteredAirports(filter).then(function (response) {
         vm.departureAirports = response.data;
       })
-    }
+    };
     vm.filterArrival = function (filter) {
       NetworkService.getFilteredAirports(filter).then(function (response) {
         vm.arrivalAirports = response.data;

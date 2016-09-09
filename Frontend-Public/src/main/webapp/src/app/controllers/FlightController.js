@@ -51,7 +51,11 @@
         function getFlight() {
             NetworkService.getFlights($stateParams.departure, $stateParams.arrival).then(function (response) {
                 vm.flights = response.data;
-                // console.log(response.data);
+            });
+        }
+        function getFilteredFlights() {
+            NetworkService.getFlights($stateParams.departure, $stateParams.arrival).then(function (response) {
+                vm.flights = response.data;
             });
         }
 

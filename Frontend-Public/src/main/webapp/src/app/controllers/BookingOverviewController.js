@@ -23,10 +23,15 @@
                 // return response.data;
             }, function () {
                 Materialize.toast("Couldn't get bookings", 1000);
-            })
+            });
+            $(document).ready(function(){
+                $('.collapsible').collapsible({
+                    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                });
+            });
+
         } else {
             $state.go('overview');
         }
     }
-
 })();

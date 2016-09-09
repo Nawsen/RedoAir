@@ -47,6 +47,7 @@
             };
             vm.book = function () {
                 NetworkService.postBooking(mapBookingToBackend(vm.booking)).then(function success(response) {
+                    $state.go('booking-overview');
                     Materialize.toast('Booking successful!', 2000);
                 }, function fail(response) {
                     Materialize.toast('Server borked. Derp', 2000);

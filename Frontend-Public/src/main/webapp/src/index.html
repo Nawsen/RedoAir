@@ -1,41 +1,46 @@
 <!doctype html>
 <html>
 <head>
-  <base href="/">
-  <meta charset="utf-8">
-  <title>FountainJS</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- build:css({.tmp,src}) styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-  <!-- endbower -->
-  <!-- endbuild -->
+    <base href="/">
+    <meta charset="utf-8">
+    <title>FountainJS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- build:css({.tmp,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
 
-  <!-- build:css({.tmp,src}) styles/app.css -->
-  <!-- inject:css -->
-  <!-- css files will be automatically insert here -->
-  <!-- endinject -->
-  <!-- endbuild -->
+    <!-- build:css({.tmp,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
 </head>
 
 
 <body ng-app="app">
 <header ng-controller="IndexController as vm">
-  <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo"><i class="material-icons md-48">airplanemode_active</i>ReDo Air</a>
-      <ul class="right hide-on-med-and-down">
-        <li class="dropdown-button" data-activates='dropdown1'><a><i class="material-icons">person</i></a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><i class="material-icons md-48">airplanemode_active</i>ReDo Air</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a ng-if="vm.currentLang == 'nl'" ng-click="vm.switchLang('en')">{{'ENGLISH' | translate}}</a>
+                    <a ng-if="vm.currentLang == 'en'" ng-click="vm.switchLang('nl')">{{'DUTCH' | translate}}</a>
+                </li>
+                <li class="dropdown-button" data-activates='dropdown1'><a><i class="material-icons">person</i></a></li>
+            </ul>
+
+        </div>
+    </nav>
     <ul id='dropdown1' class='dropdown-content'>
-        <li ng-if="vm.isLoggedIn"><a href="#!" ng-click="vm.bookings()">My bookings</a></li>
+        <li ng-if="vm.isLoggedIn"><a href="#!" ng-click="vm.bookings()">{{'DROPDOWN.MYBOOKINGS' | translate}}</a></li>
         <li class="divider"></li>
-        <li ng-if="!vm.isLoggedIn"><a href="#!" ng-click="vm.login()">Login</a></li>
-        <li ng-if="vm.isLoggedIn"><a href="#!" ng-click="vm.logout()">Log out</a></li>
+        <li ng-if="!vm.isLoggedIn"><a href="#!" ng-click="vm.login()">{{'USER.LOGIN' | translate}}</a></li>
+        <li ng-if="vm.isLoggedIn"><a href="#!" ng-click="vm.logout()">{{'USER.LOGOUT' | translate}}</a></li>
     </ul>
 </header>
 <ui-view></ui-view>

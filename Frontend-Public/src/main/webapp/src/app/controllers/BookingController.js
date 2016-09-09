@@ -13,6 +13,7 @@
         ]);
 
     function BookingController(NetworkService, BookingService, $scope, $timeout, $state, Constants) {
+        // console.log(BookingService.selectedFlight);
         if (BookingService.selectedFlight) {
             var vm = this;
 
@@ -45,13 +46,15 @@
             vm.removeSeat = function (index) {
                 vm.booking.seats.splice(index, 1);
             };
-            vm.book = function () {
-                NetworkService.postBooking(mapBookingToBackend(vm.booking)).then(function success(response) {
-                    $state.go('booking-overview');
-                    Materialize.toast('Booking successful!', 2000);
-                }, function fail(response) {
-                    Materialize.toast('Server borked. Derp', 2000);
-                });
+            vm.book = function (form) {
+                if (form.$valid) {
+                    NetworkService.postBooking(mapBookingToBackend(vm.booking)).then(function success(response) {
+                        $state.go('booking-overview');
+                        Materialize.toast('Booking successful!', 2000);
+                    }, function fail(response) {
+                        Materialize.toast('Something broke', 2000);
+                    });
+                }
             };
 
             function mapBookingToBackend(booking) {

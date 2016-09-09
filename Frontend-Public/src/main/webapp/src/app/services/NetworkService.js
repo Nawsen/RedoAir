@@ -25,7 +25,7 @@
             },
             getFilteredFlights: function (departure, arrival, startDate, endDate, typeSeat, placesLeft) {
                 return $http.get(BASE_URL + 'flight/findFiltered?departure=' + departure + '&arrival=' + arrival + '&startDate=' + startDate + '&endDate=' + endDate
-                    + '&typeSeat=' + typeSeat + '&placesLefte=' + placesLeft);
+                    + '&typeSeat=' + typeSeat + '&placesLeft=' + placesLeft);
             },
             /*
              @QueryParam("departure") String departureCode,

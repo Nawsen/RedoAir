@@ -26,9 +26,6 @@
       vm.selectedArrival = flight;
     };
 
-    vm.test = function () {
-      // console.log('scrollfire works');
-    };
 
     function getAirports() {
       NetworkService.getAllAirports().then(function (response) {

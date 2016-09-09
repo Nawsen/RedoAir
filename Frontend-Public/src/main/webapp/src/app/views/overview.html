@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col s6 m6 l6">
-      <h2>Departure</h2>
+      <h2>{{'DEPARTURE' | translate}}</h2>
       <ul class="collection">
 
 
@@ -9,7 +9,7 @@
           <i class="material-icons circle left">search</i>
           <div input-field>
             <input type="text" ng-model="vm.departure.filter" ng-change="vm.filterDeparture(vm.departure.filter)">
-            <label>Filter</label>
+            <label>{{'INPUT.FILTER' | translate}}</label>
           </div>
         </li>
       </ul>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="col s6 m6 l6">
-      <h2>Arrival</h2>
+      <h2>{{'ARRIVAL' | translate}}</h2>
       <ul class="collection">
 
 
@@ -35,7 +35,7 @@
           <i class="material-icons circle">search</i>
           <div input-field>
             <input type="text" ng-model="vm.arrival.filter" ng-change="vm.filterArrival(vm.arrival.filter)">
-            <label>Filter</label>
+            <label>{{'INPUT.FILTER' | translate}}</label>
           </div>
         </li>
       </ul>

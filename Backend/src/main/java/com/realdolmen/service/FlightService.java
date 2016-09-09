@@ -13,7 +13,7 @@ import java.util.List;
  * Created by WVDAZ49 on 2/09/2016.
  */
 public interface FlightService {
-    List<CustomerFlightVO> findFlights(String arrivalId, String departureId, Date startDate, Date endDate, SeatType type, Integer free);
+    List<CustomerFlightVO> findFlights(String departureId, String arrivalId, Date startDate, Date endDate, SeatType type, Integer free);
 
     List<CustomerFlightVO> findFlights(String departureCode, String arrivalCode);
     boolean checkForFreeTickets(Flight flight, SeatType type, Integer free);

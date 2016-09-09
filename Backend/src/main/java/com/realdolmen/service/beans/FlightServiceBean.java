@@ -36,10 +36,11 @@ public class FlightServiceBean implements FlightService {
     private MapperFacade availableFlightMapper;
 
     @Override
-    public List<CustomerFlightVO> findFlights(String arrivalId, String departureId, Date startDate, Date endDate, SeatType type, Integer free) {
+    public List<CustomerFlightVO> findFlights(String departureId, String arrivalId, Date startDate, Date endDate, SeatType type, Integer free) {
         List<Flight> vos = flightRepo.getFlightsForAirport(arrivalId, departureId);
+        System.out.println(vos.size());
         vos = filterFlights(vos, startDate, endDate, type, free);
-
+        System.out.println(vos.size());
         return customerFlightMapper.mapAsList(vos, CustomerFlightVO.class);
     }
 

@@ -28,12 +28,12 @@ public class FlightController {
     @Produces(value = MediaType.APPLICATION_JSON)
     public List<CustomerFlightVO> findFlights(@QueryParam("departure") String departureCode,
                                               @QueryParam("arrival") String arrivalCode,
-                                              @QueryParam("startDate") Double startDate,
-                                              @QueryParam("endDate") Double endDate,
+                                              @QueryParam("startDate") Long startDate,
+                                              @QueryParam("endDate") Long endDate,
                                               @QueryParam("typeSeat")SeatType type,
                                               @QueryParam("placesLeft") Integer free
                                               ){
-        return service.findFlights(departureCode, arrivalCode, new Date((long) (startDate*1000)), new Date((long) (endDate*1000)), type, free);
+        return service.findFlights(departureCode, arrivalCode, new Date(startDate*1000), new Date(endDate*1000), type, free);
     }
 
     @GET

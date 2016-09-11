@@ -33,10 +33,12 @@ angular
         'TOTALPRICE': 'Total price',
         'ENGLISH': 'English',
         'DUTCH': 'Nederlands',
+        'FLIGHT.SETTINGS': 'Flight Settings',
         'APPLICATION.SETTINGS': 'Application Settings',
         'APPLICATION.PROFIT': 'Default profit (in %)',
         'FLIGHTS.ON': 'On',
         'FLIGHTS.OFF': 'Off',
+        'ADMIN.PANEL': 'Admin panel',
     });
 
     $translateProvider.translations('nl', {
@@ -73,6 +75,9 @@ angular
         'APPLICATION.PROFIT': 'Winstmarge (in %)',
         'FLIGHTS.ON': 'Aan',
         'FLIGHTS.OFF': 'Uit',
+        'FLIGHT.SETTINGS': 'Vluchtinstellingen',
+        'ADMIN.PANEL': 'Beheerpaneel',
+
     });
 
     $translateProvider.preferredLanguage('en');

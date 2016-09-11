@@ -4,14 +4,13 @@
         .module('app')
         .controller('AccountController', [
             'NetworkService',
-            'BookingService',
             'AuthenticationService',
             '$state',
             '$stateParams',
             accountController
         ]);
 
-    function accountController(NetworkService, BookingService, AuthenticationService, $state, $stateParams) {
+    function accountController(NetworkService, AuthenticationService, $state, $stateParams) {
         if (AuthenticationService.isLoggedIn()) {
             $state.go('overview');
         }

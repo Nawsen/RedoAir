@@ -40,6 +40,7 @@ public class CustomerServiceBean implements CustomerService {
     @EntityMapper(type = MapperType.CUSTOMER_REGISTER)
     private MapperFacade customerRegisterMapper;
 
+    @Override
     public void createCustomer(CustomerRegisterVO customer) {
         customer.setPassword(BCrypt.hashpw(customer.getPassword(), BCrypt.gensalt()));
 
@@ -87,7 +88,6 @@ public class CustomerServiceBean implements CustomerService {
         }
 
         final String KEY = applicationSettingsRepo.findValue("JWT_SECRET");
-        System.out.println(KEY);
         //The JWT signature algorithm we will be using to sign the token
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 

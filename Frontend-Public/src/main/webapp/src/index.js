@@ -32,7 +32,10 @@ angular
         'TICKETSLOWERCASE': 'tickets',
         'TOTALPRICE': 'Total price',
         'ENGLISH': 'English',
-        'DUTCH': 'Nederlands'
+        'DUTCH': 'Nederlands',
+        'NOFLIGHTS': 'No flights available',
+        'NOBOOKINGS': 'No bookings yet!',
+        'NOBOOKINGS.NOTHINGHERE': 'Nothing to see here!',
     });
 
     $translateProvider.translations('nl', {
@@ -64,7 +67,10 @@ angular
         'TICKETSLOWERCASE': 'tickets',
         'TOTALPRICE': 'Totale prijs',
         'ENGLISH': 'English',
-        'DUTCH': 'Nederlands'
+        'DUTCH': 'Nederlands',
+        'NOFLIGHTS': 'Geen vluchten beschikbaar',
+        'NOBOOKINGS': 'U hebt nog geen bookings.',
+        'NOBOOKINGS.NOTHINGHERE': 'Boek snel een vlucht!',
     });
 
     $translateProvider.preferredLanguage('en');

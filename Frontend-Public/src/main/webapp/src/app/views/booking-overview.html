@@ -41,6 +41,16 @@
                 </ul>
             </div>
         </li>
+        <li ng-if="vm.bookings.length == 0">
+            <div class="collapsible-header"><i class="material-icons">event</i>
+                {{'NOBOOKINGS' | translate}}
+            </div>
+            <div class="collapsible-body">
+                <div class="col s6">
+                    {{'NOBOOKINGS.NOTHINGHERE' | translate}}
+                </div>
+            </div>
+        </li>
     </ul>
 
 

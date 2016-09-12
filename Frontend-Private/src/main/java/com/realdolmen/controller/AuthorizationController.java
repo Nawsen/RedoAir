@@ -26,7 +26,7 @@ public class AuthorizationController {
     @Produces(value = MediaType.TEXT_PLAIN)
     public Response login(CustomerLoginVO customer) {
         String JWT;
-            JWT = service.loginEmp(customer);
+            JWT = service.login(customer);
 
         if (JWT != null) {
             return Response.ok(JWT).build();

@@ -15,7 +15,7 @@
                     </div>
                     <div class="input-field col s6">
                         <input id="numberOfSeats" type="number" ng-model="vm.numberOfSeats">
-                        <label for="numberOfSeats">Minimum amount of seats</label>
+                        <label for="numberOfSeats">{{'FILTER.MINSEATS' | translate}}</label>
                     </div>
                     <!--TO DO: IMPLEMENT AIRLINECOMPANY-->
                     <!--<div class="input-field col s6">-->
@@ -27,15 +27,15 @@
                     <div class="input-field col s6">
                         <input id="startDate" type="date" class="datepicker"
                                ng-click="vm.openStartDatePicker()">
-                        <label for="startDate">Input date</label>
+                        <label for="startDate">{{'FILTER.STARTDATE' | translate}}</label>
                     </div>
                     <div class="input-field col s6">
                         <input id="endDate" type="date" class="datepicker"
                                ng-click="vm.openEndDatePicker()">
-                        <label for="endDate">Input date</label>
+                        <label for="endDate">{{'FILTER.ENDDATE' | translate}}</label>
                     </div>
                 </div>
-                <button ng-click="vm.filter()">Test</button>
+                <button class="waves-effect waves-light btn" ng-click="vm.filter()">{{'TITLE.SEARCH' | translate}}</button>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <a href="#!" class="secondary-content" ng-click="vm.go(flight)"><i class="material-icons">grade</i></a>
+            <a href="#!" class="secondary-content" ng-click="vm.go(flight)"><i class="material-icons">keyboard_arrow_right</i></a>
             <!--<div>-->
             <!--<div class="row"><span class="new badge green" data-badge-caption="BUSINESS">4</span></div>-->
             <!--<div class="row"><span class="new badge green" data-badge-caption="FIRST CLASS">3</span></div>-->

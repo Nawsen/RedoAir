@@ -36,6 +36,9 @@ angular
         'NOFLIGHTS': 'No flights available',
         'NOBOOKINGS': 'No bookings yet!',
         'NOBOOKINGS.NOTHINGHERE': 'Nothing to see here!',
+        'FILTER.MINSEATS': 'Minimum amount of seats',
+        'FILTER.STARTDATE': 'Departure from',
+        'FILTER.ENDDATE': 'Departure until',
     });
 
     $translateProvider.translations('nl', {
@@ -71,6 +74,9 @@ angular
         'NOFLIGHTS': 'Geen vluchten beschikbaar',
         'NOBOOKINGS': 'U hebt nog geen bookings.',
         'NOBOOKINGS.NOTHINGHERE': 'Boek snel een vlucht!',
+        'FILTER.MINSEATS': 'Minimaal aantal tickets',
+        'FILTER.STARTDATE': 'Vertrek van',
+        'FILTER.ENDDATE': 'Vertrek tot',
     });
 
     $translateProvider.preferredLanguage('en');

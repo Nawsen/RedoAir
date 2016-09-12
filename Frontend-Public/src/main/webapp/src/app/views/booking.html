@@ -55,22 +55,22 @@
                     <label for="CC">{{'PAYMENT.CC' | translate}}</label>
                 </p>
                 <div ng-if="vm.booking.payment == 'CC'" class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 m6">
                         <input id="cardnum" type="number" required ng-maxlength="19" ng-minlength="16" class="validate"
                                ng-model="vm.booking.creditcard">
                         <label for="cardnum">{{'CC.NUMBER' | translate}}</label>
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col s4 m2">
                         <input id="cardcheck" type="number" required ng-maxlength="3" ng-minlength="3" class="validate"
                                ng-model="vm.booking.cardcheck">
                         <label for="cardcheck">{{'CC.CVC' | translate}}</label>
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col s4 m2">
                         <input id="cardmonth" type="number" required ng-maxlength="2" ng-minlength="2" class="validate"
                                ng-model="vm.booking.cardmonth">
                         <label for="cardmonth">{{'CC.EXPIRY_MONTH' | translate}}</label>
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col s4 m2">
                         <input id="cardyear" type="number" required ng-maxlength="2" ng-minlength="2" class="validate"
                                ng-model="vm.booking.cardyear">
                         <label for="cardyear">{{'CC.EXPIRY_YEAR' | translate}}</label>
@@ -82,11 +82,11 @@
                 </p>
             </div>
         </div>
-        <div class="card col s12">
-            <div class="card-content">
-                Price per ticket:
-            </div>
-        </div>
+        <!--<div class="card col s12">-->
+            <!--<div class="card-content">-->
+                <!--Price per ticket: {{vm.price}}-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="card col s12">
             <div class="card-content">
                 <a class="waves-effect waves-light btn-large right" ng-click="vm.book(bookingForm)" ng-disabled="!bookingForm.$valid"><i

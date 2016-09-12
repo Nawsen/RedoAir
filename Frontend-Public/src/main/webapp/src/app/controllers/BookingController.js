@@ -29,6 +29,9 @@
             vm.booking.seats = [{}];
 
 
+            // NetworkService.getFlightDetails(vm.selectedFlight.flightId).then(function (response) {
+            //     vm.price = response.data.
+            // });
             vm.getNumber = function (num) {
                 return new Array(num);
             };
@@ -38,6 +41,7 @@
                     Materialize.toast('Successfully registered!', 1000);
                 });
             };
+
 
 
             vm.addSeat = function () {

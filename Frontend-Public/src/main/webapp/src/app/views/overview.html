@@ -48,8 +48,7 @@
           <p>{{airport.location.region}}<br>
             {{airport.code}}
           </p>
-          <a href="#!" ng-if="vm.selectedArrival == airport && vm.selectedDeparture" class="secondary-content" ui-sref="flight({departure: vm.selectedDeparture.code, arrival: vm.selectedArrival.code})"><i
-            class="material-icons">grade</i></a>
+          <a href="#!" ng-if="vm.selectedArrival == airport && vm.selectedDeparture" class="secondary-content" ui-sref="flight({departure: vm.selectedDeparture.code, arrival: vm.selectedArrival.code})"><i class="material-icons">keyboard_arrow_right</i></a>
         </li>
       </ul>
     </div>

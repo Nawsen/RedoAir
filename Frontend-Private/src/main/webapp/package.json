@@ -68,5 +68,9 @@
       "no-undef": 0,
       "no-unused-vars": 0
     }
+  },
+  "dependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp-util": "^3.0.7"
   }
 }

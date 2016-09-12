@@ -21,6 +21,7 @@ function inject() {
     conf.path.tmp('app/components/*.js'),
     conf.path.tmp('../bower_components/angular-aria/angular-aria.js'),
     conf.path.tmp('../bower_components/angular-animate/angular-animate.js'),
+    conf.path.tmp('../bower_components/angular-translate/angular-translate.js'),
     // conf.path.tmp('../bower_components/materialize/dist/js/materialize.js'),
     conf.path.tmp('../bower_components/angular-materialize/src/angular-materialize.js'),
     conf.path.tmp('**/*.js'),

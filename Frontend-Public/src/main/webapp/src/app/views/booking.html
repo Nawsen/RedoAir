@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card s8">
         <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">Booking {{vm.selectedFlight.departedFrom.name}} - {{vm.selectedFlight.arrivalIn.name}}<i
+            <span class="card-title activator grey-text text-darken-4">{{'TITLE.BOOKING' | translate}} {{vm.selectedFlight.departedFrom.name}} - {{vm.selectedFlight.arrivalIn.name}}<i
                 class="material-icons right">more_vert</i></span>
         </div>
     </div>
@@ -24,11 +24,11 @@
                     <div class="input-field col s5">
                         <input id="first_name{{$index}}" type="text" class="validate" ng-model="seat.firstName"
                                required>
-                        <label for="first_name{{$index}}">First Name</label>
+                        <label for="first_name{{$index}}">{{'USER.ENTERFIRSTNAME' | translate}}</label>
                     </div>
                     <div class="input-field col s5">
                         <input id="last_name{{$index}}" type="text" class="validate" ng-model="seat.lastName" required>
-                        <label for="last_name{{$index}}">Last Name</label>
+                        <label for="last_name{{$index}}">{{'USER.ENTERLASTNAME' | translate}}</label>
                     </div>
                     <!--<div class="input-field col s2">-->
                         <!--<input id="birthDate" type="date" class="datepicker" ng-model="vm.birthDate" ng-click="vm.openDatePicker()">-->
@@ -52,43 +52,48 @@
             <div class="card-content">
                 <p>
                     <input ng-model="vm.booking.payment" name="Group" type="radio" id="CC" value="CC"/>
-                    <label for="CC">Pay with Credit Card (10 percent discount)</label>
+                    <label for="CC">{{'PAYMENT.CC' | translate}}</label>
                 </p>
                 <div ng-if="vm.booking.payment == 'CC'" class="row">
                     <div class="input-field col s6">
                         <input id="cardnum" type="number" required ng-maxlength="19" ng-minlength="16" class="validate"
                                ng-model="vm.booking.creditcard">
-                        <label for="cardnum">Card number</label>
+                        <label for="cardnum">{{'CC.NUMBER' | translate}}</label>
                     </div>
                     <div class="input-field col s2">
                         <input id="cardcheck" type="number" required ng-maxlength="3" ng-minlength="3" class="validate"
                                ng-model="vm.booking.cardcheck">
-                        <label for="cardcheck">CVC</label>
+                        <label for="cardcheck">{{'CC.CVC' | translate}}</label>
                     </div>
                     <div class="input-field col s2">
                         <input id="cardmonth" type="number" required ng-maxlength="2" ng-minlength="2" class="validate"
                                ng-model="vm.booking.cardmonth">
-                        <label for="cardmonth">Month</label>
+                        <label for="cardmonth">{{'CC.EXPIRY_MONTH' | translate}}</label>
                     </div>
                     <div class="input-field col s2">
                         <input id="cardyear" type="number" required ng-maxlength="2" ng-minlength="2" class="validate"
                                ng-model="vm.booking.cardyear">
-                        <label for="cardyear">Year</label>
+                        <label for="cardyear">{{'CC.EXPIRY_YEAR' | translate}}</label>
                     </div>
                 </div>
                 <p>
                     <input ng-model="vm.booking.payment" name="Group" type="radio" id="transfer" value="transf"/>
-                    <label for="transfer">Pay with Bank Transfer</label>
+                    <label for="transfer">{{'PAYMENT.TRANSFER' | translate}}</label>
                 </p>
             </div>
         </div>
         <div class="card col s12">
             <div class="card-content">
-                <a class="waves-effect waves-light btn-large right" ng-click="vm.book()" ng-disabled="!bookingForm.$valid"><i
-                    class="material-icons right">send</i>Confirm</a>
+                Price per ticket:
+            </div>
+        </div>
+        <div class="card col s12">
+            <div class="card-content">
+                <a class="waves-effect waves-light btn-large right" ng-click="vm.book(bookingForm)" ng-disabled="!bookingForm.$valid"><i
+                    class="material-icons right">send</i>{{'CONFIRM' | translate}}</a>
                 <br/>
                 <input type="checkbox" id="agree" ng-model="vm.checked" required/>
-                <label for="agree">I agree to the Terms and Conditions</label>
+                <label for="agree">{{'TERMS_AND_CONDITIONS' | translate}}</label>
                 <br/>
             </div>
         </div>

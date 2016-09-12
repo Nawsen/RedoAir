@@ -1,12 +1,12 @@
 <div class="container">
     <div class="card">
         <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4" ng-click="vm.buttonClicked = !vm.buttonClicked">Search<i
+            <span class="card-title activator grey-text text-darken-4" ng-click="vm.buttonClicked = !vm.buttonClicked">{{'TITLE.SEARCH' | translate}}<i
                 class="material-icons right" ng-click="vm.buttonClicked = !vm.buttonClicked">more_vert</i></span>
             <div ng-if="vm.buttonClicked">
                 <div class="row">
                     <div class="input-field col s6">
-                        <select id="type" class="browser-default" ng-model="vm.seatType">
+                        <select id="type" class="browser-default" ng-model="vm.filterParameters.seatTypeFilter">
                             <!--<option value="" disabled selected>Choose your option</option>-->
                             <option ng-repeat="value in vm.seatClass track by $index" value="{{value}}">{{value}}
                             </option>
@@ -14,25 +14,28 @@
                         <!--<label for="type">Select seat type</label>-->
                     </div>
                     <div class="input-field col s6">
-                        <input id="airlineCompany" type="text" class="validate" ng-model="seat.lastName" required>
-                        <label for="airlineCompany">Last Name</label>
+                        <input id="numberOfSeats" type="number" ng-model="vm.numberOfSeats">
+                        <label for="numberOfSeats">Minimum amount of seats</label>
                     </div>
+                    <!--TO DO: IMPLEMENT AIRLINECOMPANY-->
+                    <!--<div class="input-field col s6">-->
+                        <!--<input id="airlineCompany" type="text" class="validate" ng-model="vm.filterParameters.airlineCompany" required>-->
+                        <!--<label for="airlineCompany">Airline Company</label>-->
+                    <!--</div>-->
                 </div>
-
-
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="startDate" type="date" class="datepicker" ng-model="vm.startDate"
-                               ng-change="vm.test()"
+                        <input id="startDate" type="date" class="datepicker"
                                ng-click="vm.openStartDatePicker()">
                         <label for="startDate">Input date</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="endDate" type="date" class="datepicker" ng-model="vm.endDate"
+                        <input id="endDate" type="date" class="datepicker"
                                ng-click="vm.openEndDatePicker()">
                         <label for="endDate">Input date</label>
                     </div>
                 </div>
+                <button ng-click="vm.filter()">Test</button>
             </div>
         </div>
     </div>
@@ -49,11 +52,8 @@
                     }}
                 </div>
                 <div class="col s4">
-                    <div class="chip" ng-repeat="seat in flight.availableSeats" ng-class="{'red': seat.amount == 0, 'orange': seat.amount < 5, 'green': seat.amount >= 5 }">
+                    <div class="chip" ng-repeat="seat in flight.availableSeats" ng-class="{'red': seat.amount == 0, 'orange': seat.amount < 5 && seat.amount > 0, 'green': seat.amount >= 5 }">
                         {{seat.amount}} {{seat.type}}
-                    </div>
-                    <div class="chip red" ng-if="flight.availableSeats.length == 0" ng-repeat="class in vm.seatClass">
-                        0 {{class}}
                     </div>
                 </div>
             </div>
@@ -69,6 +69,17 @@
 
             <a href="#!" class="secondary-content" ng-click="vm.go(flight)"><i class="material-icons">grade</i></a>
             <!--<div>-->
+            <!--<div class="row"><span class="new badge green" data-badge-caption="BUSINESS">4</span></div>-->
+            <!--<div class="row"><span class="new badge green" data-badge-caption="FIRST CLASS">3</span></div>-->
+            <!--<div class="row"><span class="new badge green" data-badge-caption="ECONOMY">2</span></div>-->
+            <!--</div>-->
+
+        </li>
+        <li class="collection-item avatar" ng-if="vm.flights.length == 0">
+            <i class="material-icons circle green">local_airport</i>
+            <div class="row">
+                <div class="col s2 title">{{'NOFLIGHTS' | translate }}</div>
+                <!--<div>-->
             <!--<div class="row"><span class="new badge green" data-badge-caption="BUSINESS">4</span></div>-->
             <!--<div class="row"><span class="new badge green" data-badge-caption="FIRST CLASS">3</span></div>-->
             <!--<div class="row"><span class="new badge green" data-badge-caption="ECONOMY">2</span></div>-->

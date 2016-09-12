@@ -39,7 +39,8 @@ public class EmployeeAuthFilter implements ContainerRequestFilter {
                 //after we check if the claim is correct lets set the email into the header
                 //with this we can identify the user
                 System.out.println(claim.get("userperms"));
-                if (claim.get("userperms").equals(AccountType.EMPLOYEE.toString())) {
+                if (claim.get("userperms").equals(AccountType.NORMAL.toString()) ||
+                        claim.get("userperms").equals(AccountType.EMPLOYEE.toString())){
                     requestContext.getHeaders().add("email", claim.getId());
                 } else {
                     throw new WebApplicationException(Response.status(Response.Status.UNAUTHORIZED).build());

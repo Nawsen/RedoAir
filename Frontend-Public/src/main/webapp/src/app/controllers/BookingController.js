@@ -56,7 +56,7 @@
                         $state.go('booking-overview');
                         Materialize.toast('Booking successful!', 2000);
                     }, function fail(response) {
-                        Materialize.toast('Something broke', 2000);
+                        Materialize.toast('Not enough seats available', 2000);
                     });
                 }
             };

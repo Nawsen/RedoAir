@@ -82,11 +82,17 @@
                 </p>
             </div>
         </div>
-        <!--<div class="card col s12">-->
-            <!--<div class="card-content">-->
-                <!--Price per ticket: {{vm.price}}-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="card col s12">
+            <div class="card-content">
+                <div class="col s6">
+                    {{'PRICE.ONE' | translate}}: €{{vm.getPrice()}}
+                </div>
+                <div class="col s6">
+                    {{'PRICE.TOTAL' | translate}}: €{{vm.getPrice() * vm.booking.seats.length}}
+                </div>
+            </div>
+        </div>
+
         <div class="card col s12">
             <div class="card-content">
                 <a class="waves-effect waves-light btn-large right" ng-click="vm.book(bookingForm)" ng-disabled="!bookingForm.$valid"><i

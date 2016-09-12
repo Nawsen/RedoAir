@@ -39,6 +39,8 @@ angular
         'FILTER.MINSEATS': 'Minimum amount of seats',
         'FILTER.STARTDATE': 'Departure from',
         'FILTER.ENDDATE': 'Departure until',
+        'PRICE.ONE': 'Price per ticket',
+        'PRICE.TOTAL': 'Total price',
     });
 
     $translateProvider.translations('nl', {
@@ -77,6 +79,8 @@ angular
         'FILTER.MINSEATS': 'Minimaal aantal tickets',
         'FILTER.STARTDATE': 'Vertrek van',
         'FILTER.ENDDATE': 'Vertrek tot',
+        'PRICE.ONE': 'Prijs per ticket',
+        'PRICE.TOTAL': 'Totale prijs',
     });
 
     $translateProvider.preferredLanguage('en');

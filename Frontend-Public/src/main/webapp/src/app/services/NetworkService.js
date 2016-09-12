@@ -50,7 +50,7 @@
                 return $http.get(BASE_URL + 'booking/all');
             },
             getFlightDetails: function (flightID) {
-                return $http.get(BASE_URL + 'order/details/' + flightID);
+                return $http.get(BASE_URL + 'order/details?flightId=' + flightID);
             },
 
 

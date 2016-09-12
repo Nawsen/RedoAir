@@ -57,7 +57,6 @@
             if (flight) {
                 $state.go('booking');
             } else {
-                console.log("pipikaka");
                 $state.go('overview');
             }
         }

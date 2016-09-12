@@ -27,7 +27,7 @@
             vm.booking.payment = 'CC';
             vm.booking.seatType = vm.seatClass[0];
             vm.booking.seats = [{}];
-
+            vm.price = {};
 
             // NetworkService.getFlightDetails(vm.selectedFlight.flightId).then(function (response) {
             //     vm.price = response.data.
@@ -42,7 +42,33 @@
                 });
             };
 
+            getPricePerTicket(vm.selectedFlight.flightId);
+            function getPricePerTicket(flightID) {
+                NetworkService.getFlightDetails(flightID).then(function (response) {
+                    console.log(response.data);
+                    for (var i = 0; i < response.data.length; i++) {
+                        if (response.data[i].seatType == 'BUSINESS') {
+                            vm.price.BUSINESS = response.data[i].price;
+                        } else if (response.data[i].seatType == 'FIRST_CLASS') {
+                            vm.price.FIRST_CLASS = response.data[i].price;
+                        } else if (response.data[i].seatType == 'ECONOMY') {
+                            vm.price.ECONOMY = response.data[i].price;
+                        }
+                    }
+                    console.log(vm.price);
+                });
 
+            }
+
+            vm.getPrice = function () {
+                if (vm.booking.seatType == 'BUSINESS') {
+                  return vm.price.BUSINESS;
+              }  else if (vm.booking.seatType == 'FIRST_CLASS') {
+                  return vm.price.FIRST_CLASS;
+              } else if (vm.booking.seatType == 'ECONOMY') {
+                  return vm.price.ECONOMY;
+              }
+            };
 
             vm.addSeat = function () {
                 vm.booking.seats.push({});
